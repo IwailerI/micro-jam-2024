@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://idutmojf7gdk"]
+
+[ext_resource type="Script" path="res://addons/debug_util/ignore_on_export/debug_menu/time_scale/time_scale.gd" id="1_g1t1g"]
+
+[node name="TimeScale" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_right = -124.0
+offset_bottom = -229.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g1t1g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Timescale"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.001
+value = 0.999
+exp_edit = true
+allow_greater = true
+allow_lesser = true
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.01
+max_value = 10.0
+step = 0.0
+value = 1.0
+exp_edit = true
