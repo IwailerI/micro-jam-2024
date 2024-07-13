@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://do0beanxekrqs"]
+
+[ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/spells/waterball/waterball.tscn" id="1_jpnmm"]
+[ext_resource type="Script" path="res://src/spells/spell.gd" id="1_ro05h"]
+
+[resource]
+script = ExtResource("1_ro05h")
+name = "Waterball"
+object = ExtResource("1_jpnmm")
