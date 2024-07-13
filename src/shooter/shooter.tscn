@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjyamonvs82b8"]
+[gd_scene load_steps=18 format=3 uid="uid://d75tfrs6ahsq"]
 
-[ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="1_b1ol3"]
-[ext_resource type="Script" path="res://src/objects/walker/walker.gd" id="1_b3lrv"]
-[ext_resource type="Texture2D" uid="uid://cu2ujrj2q5e0v" path="res://assets/indev/temp_enemy_arm.png" id="2_45286"]
-[ext_resource type="Texture2D" uid="uid://i6omclc8kw6b" path="res://assets/indev/temp_enemy.png" id="3_nv6it"]
+[ext_resource type="Script" path="res://src/shooter/shooter.gd" id="1_sy55w"]
+[ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="2_1tkrl"]
+[ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="3_nbbkt"]
+[ext_resource type="Texture2D" uid="uid://cu2ujrj2q5e0v" path="res://assets/indev/temp_enemy_arm.png" id="4_ul43m"]
+[ext_resource type="Texture2D" uid="uid://i6omclc8kw6b" path="res://assets/indev/temp_enemy.png" id="5_ucbsi"]
 
 [sub_resource type="Animation" id="Animation_62ko2"]
 length = 0.001
@@ -436,14 +437,11 @@ tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.0651953, 0.233903),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"hurt"
-}, {
-"args": [],
-"method": &"hurt"
+"method": &"shoot"
 }]
 }
 
@@ -557,15 +555,15 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5uif"]
-atlas = ExtResource("2_45286")
+atlas = ExtResource("4_ul43m")
 region = Rect2(0, 0, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vhff"]
-atlas = ExtResource("2_45286")
+atlas = ExtResource("4_ul43m")
 region = Rect2(0, 0, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqbyj"]
-atlas = ExtResource("2_45286")
+atlas = ExtResource("4_ul43m")
 region = Rect2(0, 16, 32, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ounsp"]
@@ -594,7 +592,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_nv6it")
+"texture": ExtResource("5_ucbsi")
 }],
 "loop": true,
 "name": &"default",
@@ -604,18 +602,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_573et"]
 radius = 8.06226
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dol11"]
-size = Vector2(39, 26)
-
-[node name="Walker" type="Area2D" groups=["Enemy"]]
+[node name="Shooter" type="Area2D" groups=["Enemy"]]
 scale = Vector2(4.1, 4.1)
 collision_layer = 2
 collision_mask = 0
 monitoring = false
-script = ExtResource("1_b3lrv")
+script = ExtResource("1_sy55w")
+projectile_scene = ExtResource("2_1tkrl")
+wanted_distance = 600.0
+perfect_distance = true
+attack_range = 750.0
 
-[node name="Hurtable" parent="." instance=ExtResource("1_b1ol3")]
-max_health = 200
+[node name="Hurtable" parent="." instance=ExtResource("3_nbbkt")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -641,13 +639,3 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_573et")
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
-position = Vector2(10.5, 0)
-shape = SubResource("RectangleShape2D_dol11")
-debug_color = Color(0.960784, 0, 0.517647, 0.231373)

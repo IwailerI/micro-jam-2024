@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
 [ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/spells/waterball/waterball.tscn" id="2_omirb"]
 [ext_resource type="Script" path="res://src/spells/spell.gd" id="3_tacvu"]
-[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/walker/walker.tscn" id="4_sla16"]
+[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="4_sla16"]
 [ext_resource type="Texture2D" uid="uid://lsl45lyyra2u" path="res://assets/indev/temp_staff.png" id="4_tgxnk"]
 
 [sub_resource type="Resource" id="Resource_ynq8y"]
