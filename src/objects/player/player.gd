@@ -10,6 +10,7 @@ var using_dual_stick := false
 var is_attacking := false
 var queued_spell: Spell = null
 
+@onready var water_collectable_area: Area2D = %WaterCollectable
 @onready var hurt_box: Area2D = %HurtBox
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = %Hurtable
@@ -17,6 +18,10 @@ var queued_spell: Spell = null
 @onready var health_bar: ProgressBar = %HealthBar
 
 func _ready() -> void:
+	water_collectable_area.area_entered.connect(func(water_drop: Area2D) -> void:
+		hurtable.heal(water_drop.heal)
+		water_drop.queue_free())
+	
 	animation_player.animation_finished.connect(func(_name: StringName) -> void:
 		animation_player.play("idle")
 		is_attacking=false)

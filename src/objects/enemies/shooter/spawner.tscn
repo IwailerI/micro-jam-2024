@@ -5,3 +5,4 @@
 
 [node name="Spawner" instance=ExtResource("1_fg0rd")]
 projectile_scene = ExtResource("2_5jv0v")
+spawn_distance = 50.0
