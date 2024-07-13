@@ -18,13 +18,14 @@ func _ready() -> void:
 	body_entered.connect(func(_arg: Object) -> void: detonate())
 	area_entered.connect(func(_arg: Object) -> void: detonate())
 	get_tree().create_timer(fuse, false, true).timeout.connect(detonate)
+	($Hurtable as Hurtable).died.connect(detonate)
 	tail_particles.emitting = true
 
 	# forgive me father for i have sinned
 	radius = ((detonation_area.get_child(0) as CollisionShape2D).shape as CircleShape2D).radius
 
 func _physics_process(delta: float) -> void:
-	position += Vector2.RIGHT * delta
+	global_position += Vector2.RIGHT.rotated(rotation) * speed * delta
 
 func detonate() -> void:
 	sprite.hide()
@@ -38,7 +39,7 @@ func detonate() -> void:
 		if not node.is_in_group(Hurtable.GROUP):
 			continue
 		var h: Hurtable = node.get_node("Hurtable")
-		
+
 		var distance := clampf(
 				node.global_position.distance_to(global_position) / radius,
 				0.0, 1.0)
@@ -46,6 +47,6 @@ func detonate() -> void:
 		h.hurt(ceili(base_damage * damage_curve.sample(distance)))
 		h.knockback(global_position.direction_to(node.global_position)
 				* base_knockback * knockback_curve.sample(distance))
-	
+
 	set_physics_process(false)
 	get_tree().create_timer(0.5).timeout.connect(queue_free)

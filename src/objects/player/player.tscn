@@ -1,23 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=25 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Texture2D" uid="uid://bklkkkqxian62" path="res://assets/indev/temp_player.png" id="1_23wsg"]
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
+[ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="2_c0634"]
 [ext_resource type="Texture2D" uid="uid://bixua3tuje28c" path="res://assets/indev/temp_player_attack.png" id="2_i6klt"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
-[ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/spells/waterball/waterball.tscn" id="2_omirb"]
-[ext_resource type="Script" path="res://src/spells/spell.gd" id="3_tacvu"]
-[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/walker/walker.tscn" id="4_sla16"]
+[ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="3_dt1dn"]
 [ext_resource type="Texture2D" uid="uid://lsl45lyyra2u" path="res://assets/indev/temp_staff.png" id="4_tgxnk"]
-
-[sub_resource type="Resource" id="Resource_ynq8y"]
-script = ExtResource("3_tacvu")
-name = "Waterball"
-object = ExtResource("2_omirb")
-
-[sub_resource type="Resource" id="Resource_o3joa"]
-script = ExtResource("3_tacvu")
-name = "Spawn Enemy"
-object = ExtResource("4_sla16")
+[ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="4_wb2ix"]
+[ext_resource type="Texture2D" uid="uid://xuolwinfl8un" path="res://assets/indev/temp_waterball.png" id="8_46ulh"]
 
 [sub_resource type="Animation" id="Animation_e0ckj"]
 length = 0.001
@@ -288,7 +279,7 @@ size = Vector2(202, 180)
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[ExtResource("3_tacvu")]([SubResource("Resource_ynq8y"), SubResource("Resource_o3joa")])
+spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
@@ -302,6 +293,7 @@ autoplay = "idle"
 next/idle = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.54, 0.54)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -329,7 +321,7 @@ shape = SubResource("CircleShape2D_wjoxv")
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -341,3 +333,74 @@ debug_color = Color(0.928424, 0.0568346, 0.640736, 0.42)
 [node name="SpellCastPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(138, 0)
+
+[node name="CanbasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI" type="Control" parent="CanbasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.904298)
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanbasLayer/UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+step = 0.0
+
+[node name="Spells" type="HBoxContainer" parent="CanbasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_46ulh")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_46ulh")
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_46ulh")
+
+[node name="PanelContainer4" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer4"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_46ulh")
