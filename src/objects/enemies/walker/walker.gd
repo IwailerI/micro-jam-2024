@@ -12,6 +12,7 @@ class_name Walker
 @export var damage: int = 30
 
 var player: Player = null
+var stun_left: float = 0.0
 var knockback: Vector2 = Vector2.ZERO
 
 @onready var water_drop_scene: PackedScene = preload("res://src/objects/waterdrop/water_drop.tscn")
@@ -31,7 +32,8 @@ func _physics_process(delta: float) -> void:
 	position += knockback * delta
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_accel * delta)
 	push_apart(delta)
-	if hurtable.is_dead:
+	stun_left -= delta # TODO: stun animation?
+	if hurtable.is_dead or stun_left > 0.0:
 		return
 
 	if not player:
@@ -82,3 +84,6 @@ func attack() -> void:
 			continue
 		var h: Hurtable = node.get_node("Hurtable")
 		h.hurt(damage)
+
+func stun(duration: float) -> void:
+	stun_left = maxf(stun_left, duration)

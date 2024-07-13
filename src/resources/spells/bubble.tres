@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://58t8mvdpmsdf"]
+
+[ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_5f32w"]
+[ext_resource type="PackedScene" uid="uid://pgqfexs6r0ad" path="res://src/objects/spells/bubble/bubble.tscn" id="1_gvsuh"]
+
+[resource]
+script = ExtResource("1_5f32w")
+name = "Bubble"
+cost = 150
+object = ExtResource("1_gvsuh")

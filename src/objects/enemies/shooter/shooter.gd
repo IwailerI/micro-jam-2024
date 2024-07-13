@@ -4,6 +4,8 @@ extends Walker
 @export var spawn_distance: float = 10.0
 
 func attack() -> void:
+	if stun_left > 0.0:
+		return
 	if not player:
 		player = get_tree().get_first_node_in_group("Player")
 		if not player:

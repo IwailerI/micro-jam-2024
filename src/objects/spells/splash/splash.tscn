@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci4fbfh76l0ey"]
+
+[ext_resource type="Texture2D" uid="uid://bnt6imouvgbu2" path="res://assets/indev/temp_snowflake.png" id="1_jvtqg"]
+[ext_resource type="Script" path="res://src/objects/spells/splash/splash.gd" id="1_rvx1s"]
+
+[sub_resource type="Curve" id="Curve_4rhdq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.856383, 0.739733), -0.907598, -0.907598, 0, 0, Vector2(1, 0), -5.66773, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_14mw3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0718085, 0.759754), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.900753, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_187lk"]
+offsets = PackedFloat32Array(0.526786, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_d5s2n"]
+offsets = PackedFloat32Array(0, 0.393333, 0.68, 1)
+colors = PackedColorArray(0.188067, 0.376638, 0.510002, 1, 0.356619, 0.431357, 0.88275, 1, 0.372244, 0.804089, 0.894469, 1, 0.796277, 0.858808, 0.988266, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppacs"]
+radius = 105.0
+
+[node name="Splash" type="Area2D"]
+scale = Vector2(4.28, 4.28)
+collision_layer = 4
+collision_mask = 6
+monitorable = false
+script = ExtResource("1_rvx1s")
+damage_curve = SubResource("Curve_4rhdq")
+knockback_curve = SubResource("Curve_14mw3")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 256
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("1_jvtqg")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.81
+initial_velocity_max = 343.44
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+angle_max = 360.0
+scale_amount_min = 4.28
+scale_amount_max = 4.28
+color_ramp = SubResource("Gradient_187lk")
+color_initial_ramp = SubResource("Gradient_d5s2n")
+
+[node name="ParticlesSplash" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 256
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 207.07
+initial_velocity_max = 459.6
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+angle_max = 360.0
+scale_amount_min = 4.28
+scale_amount_max = 4.28
+color_ramp = SubResource("Gradient_187lk")
+color_initial_ramp = SubResource("Gradient_d5s2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ppacs")
