@@ -611,6 +611,7 @@ size = Vector2(39, 26)
 scale = Vector2(4.1, 4.1)
 collision_layer = 2
 collision_mask = 0
+input_pickable = false
 monitoring = false
 script = ExtResource("1_1tin7")
 
@@ -643,6 +644,7 @@ shape = SubResource("CircleShape2D_573et")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
+input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

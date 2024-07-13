@@ -4,6 +4,7 @@
 
 [node name="BigWalker" instance=ExtResource("1_r2rp0")]
 scale = Vector2(6, 6)
+death_reward = 100
 speed = 120.0
 wanted_distance = 140.0
 attack_range = 160.0

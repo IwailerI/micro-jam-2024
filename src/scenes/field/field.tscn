@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="3_x8fd0"]
 [ext_resource type="PackedScene" uid="uid://c18edgrsraowo" path="res://src/objects/enemies/walker/big_walker.tscn" id="4_5ii45"]
 [ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="5_skfl8"]
+[ext_resource type="PackedScene" uid="uid://o47w8nqnttlx" path="res://src/objects/waterdrop/water_drop.tscn" id="6_kiims"]
 
 [node name="Field" type="Node2D"]
 
@@ -31,6 +32,10 @@ position = Vector2(643, -1028)
 
 [node name="BigWalker" parent="." instance=ExtResource("4_5ii45")]
 position = Vector2(-462, -32)
+input_pickable = true
 
 [node name="EnemyProjectile" parent="." instance=ExtResource("5_skfl8")]
 position = Vector2(-573, -1069)
+
+[node name="WaterDrop" parent="." instance=ExtResource("6_kiims")]
+position = Vector2(35, -1051)

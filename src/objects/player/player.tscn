@@ -316,6 +316,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjoxv"]
 radius = 32.1403
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6y2na"]
+radius = 34.5254
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv56u"]
 size = Vector2(202, 180)
 
@@ -325,6 +328,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Player" type="Area2D" groups=["Player"]]
 collision_mask = 0
+input_pickable = false
 monitoring = false
 script = ExtResource("1_vdg4c")
 spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_pduca")])
@@ -366,10 +370,23 @@ offset = Vector2(0, -10)
 visible = false
 shape = SubResource("CircleShape2D_wjoxv")
 
+[node name="WaterCollectable" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollectable"]
+visible = false
+shape = SubResource("CircleShape2D_6y2na")
+debug_color = Color(0, 0.629861, 0.478369, 0.42)
+
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 6
+input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

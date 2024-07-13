@@ -1,6 +1,7 @@
 extends Area2D
 class_name Walker
 
+@export var death_reward: int = 10
 @export var speed: float = 150.0
 @export var wanted_distance: float = 100.0
 @export var perfect_distance: bool = false
@@ -14,12 +15,17 @@ var player: Player = null
 var stun_left: float = 0.0
 var knockback: Vector2 = Vector2.ZERO
 
+@onready var water_drop_scene: PackedScene = preload("res://src/objects/waterdrop/water_drop.tscn")
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = $Hurtable
 @onready var hurt_box: Area2D = get_node_or_null("HurtBox")
 
 func _ready() -> void:
 	hurtable.died.connect(func() -> void:
+		var water_drop := water_drop_scene.instantiate()
+		get_parent().add_child(water_drop)
+		water_drop.global_position = global_position
+		water_drop.heal = death_reward
 		animation_player.play("death"))
 
 func _physics_process(delta: float) -> void:
