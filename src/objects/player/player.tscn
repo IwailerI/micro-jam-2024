@@ -327,6 +327,7 @@ offsets = PackedFloat32Array(0, 0.169643, 0.848214, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Player" type="Area2D" groups=["Player"]]
+z_index = 2
 collision_mask = 0
 input_pickable = false
 monitoring = false
