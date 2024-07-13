@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://bm17m8nh2avy6"]
+
+[ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_3wfka"]
+[ext_resource type="PackedScene" uid="uid://gfl3qfriaxd0" path="res://src/objects/spells/whirlpool/whirlpool.tscn" id="1_m4sbu"]
+
+[resource]
+script = ExtResource("1_3wfka")
+name = "Whirlpool"
+cost = 200
+object = ExtResource("1_m4sbu")

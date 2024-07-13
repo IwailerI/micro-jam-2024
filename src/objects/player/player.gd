@@ -14,12 +14,19 @@ var queued_spell: Spell = null
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = %Hurtable
 @onready var spell_cast_marker: Node2D = %SpellCastPosition
+@onready var health_bar: ProgressBar = %HealthBar
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(func(_name: StringName) -> void:
 		animation_player.play("idle")
 		is_attacking=false)
 	
+	health_bar.max_value = hurtable.max_health
+	health_bar.value = hurtable.health
+	hurtable.health_changed.connect(func(h: int) -> void:
+		var t:=health_bar.create_tween()
+		t.tween_property(health_bar, "value", h, 0.2))
+
 	DebugMenu.label(self, func(l: RichTextLabel) -> void:
 		l.text="Player Health: %d/%d" % [hurtable.health, hurtable.max_health])
 
@@ -49,16 +56,26 @@ func _unhandled_input(event: InputEvent) -> void:
 	):
 		using_dual_stick = true
 	
-	if event.is_action_pressed("attack") and not is_attacking:
+	if is_attacking:
+		return
+
+	if event.is_action_pressed("attack"):
 		animation_player.play("attack")
 		is_attacking = true
-		
 		get_viewport().set_input_as_handled()
 	
-	if event.is_action_pressed("spell") and not is_attacking:
-		animation_player.play("spell")
-		queued_spell = spells.pick_random() # let's gooo
-		is_attacking = true
+	if event.is_action_pressed("spell_slot_1"):
+		queue_spell(0)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("spell_slot_2"):
+		queue_spell(1)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("spell_slot_3"):
+		queue_spell(2)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("spell_slot_4"):
+		queue_spell(3)
+		get_viewport().set_input_as_handled()
 
 func get_primary_input() -> Vector2:
 	return Vector2(
@@ -87,16 +104,23 @@ func hurt() -> void:
 		h.hurt(base_attack_damage)
 		h.knockback((global_position.direction_to(node.global_position) * base_attack_knockback))
 
+func queue_spell(slot: int) -> void:
+	if spells.size() <= slot:
+		return
+	
+	queued_spell = spells[slot]
+	is_attacking = true
+	animation_player.play("spell")
+
 func cast_spell() -> void:
 	if not queued_spell:
 		return
 	
-	print(queued_spell.name)
-
 	queued_spell.fire(
 		get_parent(),
 		spell_cast_marker.global_position,
 		spell_cast_marker.global_position - global_position,
 	)
+	hurtable.hurt(queued_spell.cost)
 	queued_spell = null
 	

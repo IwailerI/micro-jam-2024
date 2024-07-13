@@ -2,6 +2,7 @@ class_name Spell
 extends Resource
 
 @export var name: String = "Spell"
+@export var cost: int = 100
 @export var object: PackedScene
 
 func fire(environment: Node, from: Vector2, direction: Vector2) -> void:

@@ -5,6 +5,7 @@ signal died
 signal revived
 signal damage_received(amount: int)
 signal heal_received(amount: int)
+signal health_changed(new_health: int)
 
 const GROUP: StringName = &"Hurtable"
 
@@ -31,33 +32,37 @@ func _assign_group() -> void:
 
 func hurt(amount: int) -> void:
 	assert(amount >= 0, "invalid damage amount")
+	amount = mini(amount, health)
 	if amount == 0:
 		return
-	amount = mini(amount, health)
-	var was_dead := is_dead
 	health -= amount
 	damage_received.emit(amount)
-	if not was_dead and is_dead:
+	health_changed.emit(health)
+	if is_dead:
 		died.emit()
 
 func heal(amount: int, allow_overheal:=false, revive:=false) -> void:
 	assert(amount >= 0, "invalid heal amount")
-	if amount == 0:
-		return
 	if is_dead and not revive:
 		return
 	if not allow_overheal:
 		amount = mini(amount, max_health - health)
+	if amount == 0:
+		return
 	var was_dead := is_dead
 	health += amount
 	if was_dead:
 		revived.emit()
 	heal_received.emit(amount)
+	health_changed.emit(health)
 
-## Kills the entity immediately. Emits only [signal died], 
+## Kills the entity immediately. Emits only [signal died] and [signal health_changed],
 ## not [signal damage_received]
 func die() -> void:
+	if is_dead:
+		return
 	health = 0
+	health_changed.emit()
 	died.emit()
 
 ## Tries applying knockback and returns whether node supports knockback.
@@ -67,4 +72,3 @@ func knockback(amount: Vector2) -> bool:
 		parent["knockback"] += amount
 		return true
 	return false
-					
