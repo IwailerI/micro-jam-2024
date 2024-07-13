@@ -33,4 +33,4 @@ position = Vector2(643, -1028)
 position = Vector2(-462, -32)
 
 [node name="EnemyProjectile" parent="." instance=ExtResource("5_skfl8")]
-position = Vector2(171, -1057)
+position = Vector2(-573, -1069)

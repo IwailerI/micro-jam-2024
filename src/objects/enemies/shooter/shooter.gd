@@ -3,7 +3,7 @@ extends Walker
 @export var projectile_scene: PackedScene
 @export var spawn_distance: float = 10.0
 
-func shoot() -> void:
+func attack() -> void:
 	if stun_left > 0.0:
 		return
 	if not player:

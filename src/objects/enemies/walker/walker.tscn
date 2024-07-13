@@ -440,10 +440,10 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"hurt"
+"method": &"attack"
 }, {
 "args": [],
-"method": &"hurt"
+"method": &"attack"
 }]
 }
 
