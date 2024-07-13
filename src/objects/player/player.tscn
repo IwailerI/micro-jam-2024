@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=24 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Texture2D" uid="uid://bklkkkqxian62" path="res://assets/indev/temp_player.png" id="1_23wsg"]
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
@@ -6,18 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
 [ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/spells/waterball/waterball.tscn" id="2_omirb"]
 [ext_resource type="Script" path="res://src/spells/spell.gd" id="3_tacvu"]
-[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/walker/walker.tscn" id="4_sla16"]
 [ext_resource type="Texture2D" uid="uid://lsl45lyyra2u" path="res://assets/indev/temp_staff.png" id="4_tgxnk"]
 
 [sub_resource type="Resource" id="Resource_ynq8y"]
 script = ExtResource("3_tacvu")
 name = "Waterball"
 object = ExtResource("2_omirb")
-
-[sub_resource type="Resource" id="Resource_o3joa"]
-script = ExtResource("3_tacvu")
-name = "Spawn Enemy"
-object = ExtResource("4_sla16")
 
 [sub_resource type="Animation" id="Animation_e0ckj"]
 length = 0.001
@@ -288,7 +282,7 @@ size = Vector2(202, 180)
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[ExtResource("3_tacvu")]([SubResource("Resource_ynq8y"), SubResource("Resource_o3joa")])
+spells = Array[ExtResource("3_tacvu")]([SubResource("Resource_ynq8y")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
@@ -302,6 +296,7 @@ autoplay = "idle"
 next/idle = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.54, 0.54)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
