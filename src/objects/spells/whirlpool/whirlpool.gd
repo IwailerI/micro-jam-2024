@@ -12,17 +12,20 @@ extends Area2D
 var enemies := {}
 var strength: float = 1.0
 var radius: float
+var soap := false
 
 @onready var fg: Node2D = $FG
 @onready var bg: Node2D = $BG
 
 func _ready() -> void:
-	get_tree().create_timer(lifetime - 0.5).timeout.connect(destroy)
+	get_tree().create_timer(lifetime - 0.5, false, true).timeout.connect(destroy)
 	radius = (($CollisionShape2D as CollisionShape2D).shape as CircleShape2D).radius
 
 func _physics_process(delta: float) -> void:
 	fg.rotation += 2 * PI * rotation_speed * delta
 	bg.rotation -= 2 * PI * rotation_speed * delta
+
+	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
 
 	var nodes: Array[Node2D] = []
 	nodes.append_array(get_overlapping_areas())
@@ -35,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		var velocity := (dir * pull_velocity * strength
 				+ dir.rotated(PI * 0.5) * side_velocity * strength * side_power)
 		var h: Hurtable = node.get_node("Hurtable")
-		h.hurt(ceili(dps * delta))
+		h.hurt(ceili(dps * delta * sm))
 		h.knockback(velocity * delta)
 
 func destroy() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=7 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
+[ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="2_kpp0x"]
 [ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="3_x8fd0"]
 [ext_resource type="PackedScene" uid="uid://c18edgrsraowo" path="res://src/objects/enemies/walker/big_walker.tscn" id="4_5ii45"]
@@ -8,9 +9,13 @@
 
 [node name="Field" type="Node2D"]
 
+[node name="Background" parent="." instance=ExtResource("1_i7cva")]
+
 [node name="Player" parent="." instance=ExtResource("1_74eao")]
 position = Vector2(306, -1055)
 speed = 500.0
+base_attack_damage = null
+base_attack_knockback = null
 
 [node name="Walker" parent="." instance=ExtResource("2_kpp0x")]
 position = Vector2(33, 881)

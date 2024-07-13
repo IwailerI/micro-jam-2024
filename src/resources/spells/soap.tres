@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://ci62sthltqwh0"]
+
+[ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_05dy4"]
+[ext_resource type="PackedScene" uid="uid://d4fpn0k52v63h" path="res://src/objects/spells/soap/soap.tscn" id="1_y5w2r"]
+
+[resource]
+script = ExtResource("1_05dy4")
+name = "SOAP"
+cost = 50
+object = ExtResource("1_y5w2r")

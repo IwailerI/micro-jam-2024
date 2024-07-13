@@ -135,4 +135,4 @@ spell_slot_4={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.66, 0.53295, 0.4422, 1)
+environment/defaults/default_clear_color=Color(0.643366, 0.549096, 0.356619, 1)
