@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://c46sj4cnfole0"]
+
+[ext_resource type="Script" path="res://src/objects/shop/shop.gd" id="1_cf3oo"]
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_ffsrh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntqba"]
+atlas = ExtResource("1_ffsrh")
+region = Rect2(12, 0, 12, 12)
+
+[node name="Shop" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cf3oo")
+
+[node name="Control" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pick a spell! (it will cost ya)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLeft" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tsunami"
+horizontal_alignment = 1
+
+[node name="IconLeft" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ntqba")
+stretch_mode = 5
+
+[node name="DescriptionLeft" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "A powerful spell to conquer your enemies!"
+autowrap_mode = 3
+
+[node name="ButtonLeft" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "or"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameRight" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tsunami"
+horizontal_alignment = 1
+
+[node name="IconRight" type="TextureRect" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ntqba")
+stretch_mode = 5
+
+[node name="DescriptionRight" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "A powerful spell to conquer your enemies!"
+autowrap_mode = 3
+
+[node name="ButtonRight" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select"

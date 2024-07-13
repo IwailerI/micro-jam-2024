@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://do0beanxekrqs"]
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://do0beanxekrqs"]
 
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_4yp0n"]
 [ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/objects/spells/waterball/waterball.tscn" id="1_jpnmm"]
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_ro05h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhs6l"]
+atlas = ExtResource("1_4yp0n")
+region = Rect2(0, 0, 12, 12)
 
 [resource]
 script = ExtResource("1_ro05h")
 name = "Waterball"
 cost = 100
 object = ExtResource("1_jpnmm")
+icon = SubResource("AtlasTexture_fhs6l")

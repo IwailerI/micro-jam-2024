@@ -1,10 +1,18 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://58t8mvdpmsdf"]
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://58t8mvdpmsdf"]
 
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_5f32w"]
 [ext_resource type="PackedScene" uid="uid://pgqfexs6r0ad" path="res://src/objects/spells/bubble/bubble.tscn" id="1_gvsuh"]
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_r085h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mkh1"]
+atlas = ExtResource("1_r085h")
+region = Rect2(48, 0, 12, 12)
 
 [resource]
 script = ExtResource("1_5f32w")
 name = "Bubble"
 cost = 150
+shop_cost = 100
 object = ExtResource("1_gvsuh")
+icon = SubResource("AtlasTexture_4mkh1")
+description = "A powerful spell to conquer your enemies!"

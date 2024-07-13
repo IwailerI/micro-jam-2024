@@ -1,15 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=31 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
-[ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="2_c0634"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
-[ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="3_dt1dn"]
-[ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="4_wb2ix"]
-[ext_resource type="Resource" uid="uid://ci62sthltqwh0" path="res://src/resources/spells/soap.tres" id="5_pduca"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="6_mw7ci"]
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="6_ry72u"]
 [ext_resource type="Texture2D" uid="uid://djwag8voljomu" path="res://assets/animatons/player_walk.png" id="7_rbo4w"]
 [ext_resource type="Texture2D" uid="uid://cfdjnxrqdjpjj" path="res://assets/animatons/player_spell.png" id="8_2m7cf"]
-[ext_resource type="Texture2D" uid="uid://xuolwinfl8un" path="res://assets/indev/temp_waterball.png" id="8_46ulh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo7rt"]
+atlas = ExtResource("6_ry72u")
+region = Rect2(72, 0, 12, 12)
 
 [sub_resource type="Animation" id="Animation_e0ckj"]
 length = 0.001
@@ -326,12 +326,16 @@ size = Vector2(202, 180)
 offsets = PackedFloat32Array(0, 0.169643, 0.848214, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdm03"]
+atlas = ExtResource("6_ry72u")
+region = Rect2(72, 0, 12, 12)
+
 [node name="Player" type="Area2D" groups=["Player"]]
 collision_mask = 0
 input_pickable = false
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_pduca")])
+placeholder_spell_icon = SubResource("AtlasTexture_eo7rt")
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
@@ -354,6 +358,7 @@ drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
+editor_draw_screen = false
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -419,70 +424,58 @@ color_ramp = SubResource("Gradient_4vjal")
 [node name="CanbasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="UI" type="Control" parent="CanbasLayer"]
-layout_mode = 3
-anchors_preset = 15
+[node name="UI" type="VBoxContainer" parent="CanbasLayer"]
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.01078
+offset_bottom = 62.0149
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.904298)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanbasLayer/UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -2.0
-offset_right = 2.0
-offset_bottom = 27.0
-grow_horizontal = 2
+layout_mode = 2
 step = 0.0
 
-[node name="Spells" type="HBoxContainer" parent="CanbasLayer/UI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
+[node name="Control" type="Control" parent="CanbasLayer/UI"]
 layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanbasLayer/UI"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanbasLayer/UI/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SpellSlot1" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("8_46ulh")
+texture = SubResource("AtlasTexture_rdm03")
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer2"]
+[node name="SpellSlot2" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("8_46ulh")
+texture = SubResource("AtlasTexture_rdm03")
 
-[node name="PanelContainer3" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer3"]
+[node name="SpellSlot3" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("8_46ulh")
+texture = SubResource("AtlasTexture_rdm03")
 
-[node name="PanelContainer4" type="PanelContainer" parent="CanbasLayer/UI/Spells"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CanbasLayer/UI/Spells/PanelContainer4"]
+[node name="SpellSlot4" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("8_46ulh")
+texture = SubResource("AtlasTexture_rdm03")

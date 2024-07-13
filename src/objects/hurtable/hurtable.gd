@@ -1,5 +1,5 @@
-extends Node
 class_name Hurtable
+extends Node
 
 signal died
 signal revived
@@ -72,3 +72,6 @@ func knockback(amount: Vector2) -> bool:
 		parent["knockback"] += amount
 		return true
 	return false
+
+func remove_overheal() -> void:
+	health = mini(health, max_health)

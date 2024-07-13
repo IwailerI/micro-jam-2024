@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://ci62sthltqwh0"]
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://ci62sthltqwh0"]
 
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_05dy4"]
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_f2iw5"]
 [ext_resource type="PackedScene" uid="uid://d4fpn0k52v63h" path="res://src/objects/spells/soap/soap.tscn" id="1_y5w2r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8prak"]
+atlas = ExtResource("1_f2iw5")
+region = Rect2(60, 0, 12, 12)
 
 [resource]
 script = ExtResource("1_05dy4")
 name = "SOAP"
 cost = 50
 object = ExtResource("1_y5w2r")
+icon = SubResource("AtlasTexture_8prak")

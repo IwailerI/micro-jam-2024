@@ -1,10 +1,18 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://0dv2chts30gi"]
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://0dv2chts30gi"]
 
 [ext_resource type="PackedScene" uid="uid://ci4fbfh76l0ey" path="res://src/objects/spells/splash/splash.tscn" id="1_o4t8i"]
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_q32jq"]
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_y5ou1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa2jg"]
+atlas = ExtResource("1_y5ou1")
+region = Rect2(36, 0, 12, 12)
 
 [resource]
 script = ExtResource("1_q32jq")
 name = "Splash"
 cost = 100
+shop_cost = 100
 object = ExtResource("1_o4t8i")
+icon = SubResource("AtlasTexture_fa2jg")
+description = "A powerful spell to conquer your enemies!"
