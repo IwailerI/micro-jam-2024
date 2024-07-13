@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=31 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
 [ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="2_c0634"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
 [ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="3_dt1dn"]
 [ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="4_wb2ix"]
+[ext_resource type="Resource" uid="uid://58t8mvdpmsdf" path="res://src/resources/spells/bubble.tres" id="5_k50tu"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="6_mw7ci"]
 [ext_resource type="Texture2D" uid="uid://djwag8voljomu" path="res://assets/animatons/player_walk.png" id="7_rbo4w"]
 [ext_resource type="Texture2D" uid="uid://cfdjnxrqdjpjj" path="res://assets/animatons/player_spell.png" id="8_2m7cf"]
@@ -322,7 +323,7 @@ size = Vector2(202, 180)
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix")])
+spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_k50tu")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true

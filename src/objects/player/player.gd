@@ -20,7 +20,7 @@ func _ready() -> void:
 	animation_player.animation_finished.connect(func(_name: StringName) -> void:
 		animation_player.play("idle")
 		is_attacking=false)
-	
+
 	health_bar.max_value = hurtable.max_health
 	health_bar.value = hurtable.health
 	hurtable.health_changed.connect(func(h: int) -> void:
@@ -61,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		or event.is_action("look_up")
 	):
 		using_dual_stick = true
-	
+
 	if is_attacking:
 		return
 
@@ -69,7 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		animation_player.play("attack")
 		is_attacking = true
 		get_viewport().set_input_as_handled()
-	
+
 	if event.is_action_pressed("spell_slot_1"):
 		queue_spell(0)
 		get_viewport().set_input_as_handled()
@@ -113,7 +113,7 @@ func hurt() -> void:
 func queue_spell(slot: int) -> void:
 	if spells.size() <= slot:
 		return
-	
+
 	queued_spell = spells[slot]
 	is_attacking = true
 	animation_player.play("spell")
@@ -121,7 +121,7 @@ func queue_spell(slot: int) -> void:
 func cast_spell() -> void:
 	if not queued_spell:
 		return
-	
+
 	queued_spell.fire(
 		get_parent(),
 		spell_cast_marker.global_position,

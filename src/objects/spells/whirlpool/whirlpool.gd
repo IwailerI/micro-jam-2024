@@ -17,7 +17,7 @@ var radius: float
 @onready var bg: Node2D = $BG
 
 func _ready() -> void:
-	get_tree().create_timer(lifetime - 0.5).timeout.connect(destroy)
+	get_tree().create_timer(lifetime - 0.5, false, true).timeout.connect(destroy)
 	radius = (($CollisionShape2D as CollisionShape2D).shape as CircleShape2D).radius
 
 func _physics_process(delta: float) -> void:

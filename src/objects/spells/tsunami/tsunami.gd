@@ -9,7 +9,7 @@ extends Area2D
 var sticky := {}
 
 func _ready() -> void:
-	get_tree().create_timer(lifetime).timeout.connect(destroy)
+	get_tree().create_timer(lifetime, false, true).timeout.connect(destroy)
 	modulate.a = 0
 	create_tween().tween_property(self, "modulate", Color.WHITE, fade_in)
 	body_entered.connect(_node_collided)
