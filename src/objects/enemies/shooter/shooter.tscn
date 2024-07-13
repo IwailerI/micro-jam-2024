@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://d75tfrs6ahsq"]
 
-[ext_resource type="Script" path="res://src/shooter/shooter.gd" id="1_sy55w"]
+[ext_resource type="Script" path="res://src/objects/enemies/shooter/shooter.gd" id="1_sy55w"]
 [ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="2_1tkrl"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="3_nbbkt"]
 [ext_resource type="Texture2D" uid="uid://cu2ujrj2q5e0v" path="res://assets/indev/temp_enemy_arm.png" id="4_ul43m"]
@@ -24,7 +24,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("LeftArm:rotation")
-tracks/1/interp = 1
+tracks/1/interp = 4
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
@@ -48,7 +48,7 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("RightArm:rotation")
-tracks/3/interp = 1
+tracks/3/interp = 4
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),

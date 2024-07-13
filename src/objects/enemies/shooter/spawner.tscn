@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcp11o4mh7fle"]
 
-[ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/shooter/shooter.tscn" id="1_fg0rd"]
+[ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="1_fg0rd"]
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="2_5jv0v"]
 
 [node name="Spawner" instance=ExtResource("1_fg0rd")]

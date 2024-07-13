@@ -15,7 +15,7 @@ var knockback: Vector2 = Vector2.ZERO
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = $Hurtable
-@onready var hurt_box: Area2D = $HurtBox
+@onready var hurt_box: Area2D = get_node_or_null("HurtBox")
 
 func _ready() -> void:
 	hurtable.died.connect(func() -> void:
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		return
 	walk(delta)
 
-func walk(delta): 
+func walk(delta: float) -> void:
 	var player_dir := global_position.direction_to(player.global_position)
 	var target_pos := player.global_position - player_dir * wanted_distance
 	var player_dist_2 := global_position.distance_squared_to(player.global_position)
