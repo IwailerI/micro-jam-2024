@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=25 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Texture2D" uid="uid://bklkkkqxian62" path="res://assets/indev/temp_player.png" id="1_23wsg"]
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
 [ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="3_dt1dn"]
 [ext_resource type="Texture2D" uid="uid://lsl45lyyra2u" path="res://assets/indev/temp_staff.png" id="4_tgxnk"]
+[ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="4_wb2ix"]
 [ext_resource type="Texture2D" uid="uid://xuolwinfl8un" path="res://assets/indev/temp_waterball.png" id="8_46ulh"]
 
 [sub_resource type="Animation" id="Animation_e0ckj"]
@@ -278,7 +279,7 @@ size = Vector2(202, 180)
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[Resource("res://src/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn")])
+spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
