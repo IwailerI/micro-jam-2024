@@ -41,6 +41,12 @@ func _physics_process(delta: float) -> void:
 	var secondary_input := get_secondary_input()
 	rotation = secondary_input.angle()
 
+	if animation_player.current_animation in ["idle", "walk"]:
+		if input.is_zero_approx():
+			animation_player.play("idle")
+		else:
+			animation_player.play("walk")
+
 func _unhandled_input(event: InputEvent) -> void:
 	if hurtable.is_dead:
 		return
@@ -123,4 +129,3 @@ func cast_spell() -> void:
 	)
 	hurtable.hurt(queued_spell.cost)
 	queued_spell = null
-	
