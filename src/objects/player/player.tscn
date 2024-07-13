@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=33 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
 [ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="2_c0634"]
@@ -332,9 +332,6 @@ input_pickable = false
 monitoring = false
 script = ExtResource("1_vdg4c")
 spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_pduca")])
-speed = null
-base_attack_damage = null
-base_attack_knockback = null
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true

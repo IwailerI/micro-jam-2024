@@ -26,7 +26,7 @@ func _ready() -> void:
 		get_parent().add_child(water_drop)
 		water_drop.global_position = global_position
 		water_drop.heal = death_reward
-		animation_player.play("death"))
+		animation_player.play("death"), CONNECT_DEFERRED)
 
 func _physics_process(delta: float) -> void:
 	position += knockback * delta
