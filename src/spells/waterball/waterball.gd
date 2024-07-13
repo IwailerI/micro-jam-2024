@@ -18,6 +18,7 @@ func _ready() -> void:
 	body_entered.connect(func(_arg: Object) -> void: detonate())
 	area_entered.connect(func(_arg: Object) -> void: detonate())
 	get_tree().create_timer(fuse, false, true).timeout.connect(detonate)
+	($Hurtable as Hurtable).died.connect(detonate)
 	tail_particles.emitting = true
 
 	# forgive me father for i have sinned

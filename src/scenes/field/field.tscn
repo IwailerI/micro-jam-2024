@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=4 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/walker/walker.tscn" id="2_kpp0x"]
+[ext_resource type="PackedScene" uid="uid://22ot6f12mdrf" path="res://src/spells/waterball/waterball.tscn" id="3_y5c0w"]
 
 [node name="Field" type="Node2D"]
 
@@ -16,3 +17,8 @@ position = Vector2(-582, 406)
 
 [node name="Walker3" parent="." instance=ExtResource("2_kpp0x")]
 position = Vector2(846, 312)
+
+[node name="Waterball" parent="." instance=ExtResource("3_y5c0w")]
+position = Vector2(720, -431)
+speed = 0.0
+fuse = 99999.0

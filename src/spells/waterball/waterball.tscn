@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://22ot6f12mdrf"]
+[gd_scene load_steps=12 format=3 uid="uid://22ot6f12mdrf"]
 
 [ext_resource type="Texture2D" uid="uid://xuolwinfl8un" path="res://assets/indev/temp_waterball.png" id="1_5gfkh"]
 [ext_resource type="Script" path="res://src/spells/waterball/waterball.gd" id="1_ffwvv"]
+[ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_c28ks"]
 [ext_resource type="Texture2D" uid="uid://bnt6imouvgbu2" path="res://assets/indev/temp_snowflake.png" id="3_fu8cx"]
 
 [sub_resource type="Curve" id="Curve_a6bjh"]
@@ -33,11 +34,14 @@ radius = 99.0
 [node name="Waterball" type="Area2D"]
 scale = Vector2(3.585, 3.585)
 collision_layer = 4
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_ffwvv")
 speed = 1000.0
 knockback_curve = SubResource("Curve_a6bjh")
 damage_curve = SubResource("Curve_2fbaq")
+
+[node name="Hurtable" parent="." instance=ExtResource("2_c28ks")]
+max_health = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7, 0)
