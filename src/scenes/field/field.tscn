@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bun5unmqberbc"]
+
+[ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
+[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/walker/walker.tscn" id="2_kpp0x"]
+
+[node name="Field" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_74eao")]
+speed = 500.0
+
+[node name="Walker" parent="." instance=ExtResource("2_kpp0x")]
+position = Vector2(15, 297)
+
+[node name="Walker2" parent="." instance=ExtResource("2_kpp0x")]
+position = Vector2(-582, 406)
+
+[node name="Walker3" parent="." instance=ExtResource("2_kpp0x")]
+position = Vector2(846, 312)

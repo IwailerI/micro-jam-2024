@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw1lk4a1brvrr"]
+
+[ext_resource type="Script" path="res://src/objects/hurtable/hurtable.gd" id="1_cuhn1"]
+
+[node name="Hurtable" type="Node"]
+script = ExtResource("1_cuhn1")
