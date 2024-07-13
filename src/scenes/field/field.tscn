@@ -14,6 +14,8 @@
 [node name="Player" parent="." instance=ExtResource("1_74eao")]
 position = Vector2(306, -1055)
 speed = 500.0
+base_attack_damage = null
+base_attack_knockback = null
 
 [node name="Walker" parent="." instance=ExtResource("2_kpp0x")]
 position = Vector2(33, 881)

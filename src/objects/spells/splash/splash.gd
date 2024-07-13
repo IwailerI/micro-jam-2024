@@ -5,6 +5,8 @@ extends Area2D
 @export var damage_curve: Curve
 @export var knockback_curve: Curve
 
+var soap := false
+
 @onready var lifetime: float = $Particles["lifetime"]
 @onready var radius: float = $CollisionShape2D["shape"]["radius"] * scale.x
 
@@ -22,6 +24,8 @@ func _physics_process(_delta: float) -> void:
 	set_physics_process(false)
 	await get_tree().physics_frame
 
+	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
+
 	var nodes: Array[Node2D] = []
 	nodes.append_array(get_overlapping_areas())
 	nodes.append_array(get_overlapping_bodies())
@@ -34,5 +38,5 @@ func _physics_process(_delta: float) -> void:
 
 		print("%s %s %s" % [node, distance, direction])
 
-		h.hurt(ceili(base_damage * damage_curve.sample(distance)))
-		h.knockback(direction * base_knockback * damage_curve.sample(distance))
+		h.hurt(ceili(base_damage * damage_curve.sample(distance) * sm))
+		h.knockback(direction * base_knockback * damage_curve.sample(distance) * sm)

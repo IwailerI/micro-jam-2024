@@ -1,11 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=32 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
 [ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="2_c0634"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
 [ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="3_dt1dn"]
 [ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="4_wb2ix"]
-[ext_resource type="Resource" uid="uid://58t8mvdpmsdf" path="res://src/resources/spells/bubble.tres" id="5_k50tu"]
+[ext_resource type="Resource" uid="uid://ci62sthltqwh0" path="res://src/resources/spells/soap.tres" id="5_pduca"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="6_mw7ci"]
 [ext_resource type="Texture2D" uid="uid://djwag8voljomu" path="res://assets/animatons/player_walk.png" id="7_rbo4w"]
 [ext_resource type="Texture2D" uid="uid://cfdjnxrqdjpjj" path="res://assets/animatons/player_spell.png" id="8_2m7cf"]
@@ -319,11 +319,18 @@ radius = 32.1403
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv56u"]
 size = Vector2(202, 180)
 
+[sub_resource type="Gradient" id="Gradient_4vjal"]
+offsets = PackedFloat32Array(0, 0.169643, 0.848214, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Player" type="Area2D" groups=["Player"]]
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_vdg4c")
-spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_k50tu")])
+spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0634"), ExtResource("3_dt1dn"), ExtResource("4_wb2ix"), ExtResource("5_pduca")])
+speed = null
+base_attack_damage = null
+base_attack_knockback = null
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
@@ -374,6 +381,26 @@ debug_color = Color(0.928424, 0.0568346, 0.640736, 0.42)
 [node name="SpellCastPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(138, 0)
+
+[node name="SoapParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 64
+lifetime = 2.0
+explosiveness = 0.33
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 109.66
+spread = 180.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.5
+tangential_accel_min = -50.0
+tangential_accel_max = 50.0
+scale_amount_min = 5.25
+scale_amount_max = 5.25
+color = Color(0.796078, 0.858824, 0.988235, 1)
+color_ramp = SubResource("Gradient_4vjal")
 
 [node name="CanbasLayer" type="CanvasLayer" parent="."]
 layer = 2

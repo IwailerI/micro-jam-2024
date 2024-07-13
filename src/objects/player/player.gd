@@ -1,6 +1,8 @@
 class_name Player
 extends Area2D
 
+const SOAP_MULTIPLIER: float = 1.5
+
 @export var spells: Array[Spell] = []
 @export var speed: float = 200.0
 @export var base_attack_damage: int = 100
@@ -9,7 +11,12 @@ extends Area2D
 var using_dual_stick := false
 var is_attacking := false
 var queued_spell: Spell = null
+var soap := false:
+	set(v):
+		soap = v
+		soap_particles.emitting = v
 
+@onready var soap_particles: CPUParticles2D = %SoapParticles
 @onready var hurt_box: Area2D = %HurtBox
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = %Hurtable
@@ -26,6 +33,8 @@ func _ready() -> void:
 	hurtable.health_changed.connect(func(h: int) -> void:
 		var t:=health_bar.create_tween()
 		t.tween_property(health_bar, "value", h, 0.2))
+
+	soap = false
 
 	DebugMenu.label(self, func(l: RichTextLabel) -> void:
 		l.text="Player Health: %d/%d" % [hurtable.health, hurtable.max_health])
@@ -103,12 +112,16 @@ func hurt() -> void:
 	var nodes: Array[Node2D] = hurt_box.get_overlapping_bodies()
 	nodes.append_array(hurt_box.get_overlapping_areas())
 
+	var multiplier := SOAP_MULTIPLIER if soap else 1.0
+
 	for node: Node2D in nodes:
 		if not node.is_in_group(Hurtable.GROUP):
 			continue
 		var h: Hurtable = node.get_node("Hurtable")
-		h.hurt(base_attack_damage)
+		h.hurt(ceili(base_attack_damage * multiplier))
 		h.knockback((global_position.direction_to(node.global_position) * base_attack_knockback))
+	
+	soap = false
 
 func queue_spell(slot: int) -> void:
 	if spells.size() <= slot:
@@ -122,10 +135,14 @@ func cast_spell() -> void:
 	if not queued_spell:
 		return
 
+	var was_soap := soap
+	soap = false # we need to reset soap before firing the spell
+
 	queued_spell.fire(
 		get_parent(),
 		spell_cast_marker.global_position,
 		spell_cast_marker.global_position - global_position,
+		was_soap,
 	)
 	hurtable.hurt(queued_spell.cost)
 	queued_spell = null
