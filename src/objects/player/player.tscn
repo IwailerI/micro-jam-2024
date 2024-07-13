@@ -283,6 +283,7 @@ spells = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("2_c0
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
+max_health = 1000
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

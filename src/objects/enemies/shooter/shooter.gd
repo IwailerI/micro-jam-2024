@@ -3,7 +3,7 @@ extends Walker
 @export var projectile_scene: PackedScene
 @export var spawn_distance: float = 10.0
 
-func shoot() -> void:
+func attack() -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("Player")
 		if not player:

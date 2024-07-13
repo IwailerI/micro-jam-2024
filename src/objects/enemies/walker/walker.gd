@@ -67,7 +67,7 @@ func push_apart(delta: float) -> void:
 		global_position += (remap(dist2, 0, enemy_distance * enemy_distance, 1, 0)
 				* dir * push_apart_force * delta)
 
-func hurt() -> void:
+func attack() -> void:
 	var nodes: Array[Node2D] = hurt_box.get_overlapping_bodies()
 	nodes.append_array(hurt_box.get_overlapping_areas())
 
