@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c18edgrsraowo"]
+
+[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="1_r2rp0"]
+
+[node name="BigWalker" instance=ExtResource("1_r2rp0")]
+scale = Vector2(6, 6)
+speed = 120.0
+wanted_distance = 140.0
+attack_range = 160.0
+enemy_distance = 140.0
+knockback_accel = 500.0
+damage = 75
+
+[node name="Hurtable" parent="." index="0"]
+max_health = 1000

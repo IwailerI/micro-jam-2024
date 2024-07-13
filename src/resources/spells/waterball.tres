@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("1_ro05h")
 name = "Waterball"
+cost = 100
 object = ExtResource("1_jpnmm")
