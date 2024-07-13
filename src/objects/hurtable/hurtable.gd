@@ -59,3 +59,12 @@ func heal(amount: int, allow_overheal:=false, revive:=false) -> void:
 func die() -> void:
     health = 0
     died.emit()
+
+## Tries applying knockback and returns whether node supports knockback.
+func knockback(amount: Vector2) -> bool:
+    var parent := get_parent()
+    if "knockback" in parent and parent["knockback"] is Vector2:
+        parent["knockback"] += amount
+        return true
+    return false
+					
