@@ -23,7 +23,12 @@ func _ready() -> void:
 	effects_slider.value_changed.connect(func(v: float) -> void:
 		effects_label.text="%d%%" % remap(v, -80, 0, 0, 100)
 		AudioServer.set_bus_volume_db(SFX_BUS, v))
-	close_button.pressed.connect(hide)
+	close_button.pressed.connect(func() -> void:
+		if get_tree().paused and not visible:
+			return
+		get_tree().paused = not get_tree().paused
+		visible = not visible
+		get_viewport().set_input_as_handled())
 	tree_exiting.connect(save_settings)
 
 	load_settings()
