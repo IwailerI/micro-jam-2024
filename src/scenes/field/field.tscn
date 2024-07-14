@@ -60,15 +60,18 @@ process_mode = 3
 script = ExtResource("3_xly2j")
 
 [node name="Intro" type="AudioStreamPlayer" parent="MusicNode"]
+unique_name_in_owner = true
 stream = ExtResource("3_7in31")
 autoplay = true
 bus = &"Music"
 
 [node name="Drums" type="AudioStreamPlayer" parent="MusicNode"]
+unique_name_in_owner = true
 stream = ExtResource("4_3jk1f")
 bus = &"Drums"
 
 [node name="Loop" type="AudioStreamPlayer" parent="MusicNode"]
+unique_name_in_owner = true
 stream = ExtResource("5_p2h7a")
 bus = &"Music"
 
