@@ -1,12 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=21 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
 [ext_resource type="Script" path="res://src/scenes/field/field.gd" id="1_vku61"]
 [ext_resource type="Script" path="res://src/objects/enemies/spawn_wave/spawn_wave.gd" id="2_knf3v"]
+[ext_resource type="AudioStream" uid="uid://bf64repu3ypp8" path="res://assets/music/main_intro.wav" id="3_7in31"]
 [ext_resource type="Resource" uid="uid://58t8mvdpmsdf" path="res://src/resources/spells/bubble.tres" id="3_mlrv6"]
+[ext_resource type="Script" path="res://src/scenes/field/music_node.gd" id="3_xly2j"]
+[ext_resource type="AudioStream" uid="uid://bx5u21ns8wkkp" path="res://assets/music/main_drums.wav" id="4_3jk1f"]
 [ext_resource type="Resource" uid="uid://ci62sthltqwh0" path="res://src/resources/spells/soap.tres" id="4_tevd7"]
 [ext_resource type="Resource" uid="uid://0dv2chts30gi" path="res://src/resources/spells/splash.tres" id="5_1hprq"]
+[ext_resource type="AudioStream" uid="uid://cyayu0v7htos5" path="res://assets/music/main_loop.wav" id="5_p2h7a"]
 [ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="6_2cji7"]
 [ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="7_3g4jo"]
 [ext_resource type="PackedScene" uid="uid://c46sj4cnfole0" path="res://src/objects/shop/shop.tscn" id="8_8pnca"]
@@ -50,6 +54,23 @@ spawner_count = 10
 [node name="Field" type="Node2D"]
 script = ExtResource("1_vku61")
 waves = Array[ExtResource("2_knf3v")]([SubResource("Resource_7tnbv"), SubResource("Resource_88ekr"), SubResource("Resource_mlmoi"), SubResource("Resource_kouxo"), SubResource("Resource_sjlqv")])
+
+[node name="MusicNode" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("3_xly2j")
+
+[node name="Intro" type="AudioStreamPlayer" parent="MusicNode"]
+stream = ExtResource("3_7in31")
+autoplay = true
+bus = &"Music"
+
+[node name="Drums" type="AudioStreamPlayer" parent="MusicNode"]
+stream = ExtResource("4_3jk1f")
+bus = &"Drums"
+
+[node name="Loop" type="AudioStreamPlayer" parent="MusicNode"]
+stream = ExtResource("5_p2h7a")
+bus = &"Music"
 
 [node name="Background" parent="." instance=ExtResource("1_i7cva")]
 
