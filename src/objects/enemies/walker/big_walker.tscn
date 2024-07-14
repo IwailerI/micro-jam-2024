@@ -209,14 +209,14 @@ _data = {
 radius = 10.8346
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pwmc"]
-size = Vector2(47.8333, 38.6667)
+size = Vector2(64.8333, 38.6667)
 
 [node name="BigWalker" instance=ExtResource("1_r2rp0")]
 scale = Vector2(6, 6)
 death_reward = 30
 speed = 110.0
 wanted_distance = 150.0
-attack_range = 200.0
+attack_range = 330.0
 enemy_distance = 140.0
 knockback_accel = 500.0
 damage = 75
@@ -238,5 +238,5 @@ sprite_frames = ExtResource("2_t0pyr")
 shape = SubResource("CircleShape2D_35i55")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(14.9167, 0)
+position = Vector2(23.4167, 0)
 shape = SubResource("RectangleShape2D_6pwmc")

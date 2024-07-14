@@ -194,6 +194,7 @@ spawn_distance = 50.0
 death_reward = 15
 wanted_distance = 750.0
 attack_range = 1000.0
+variants = Array[SpriteFrames]([ExtResource("3_gbuol")])
 
 [node name="Hurtable" parent="." index="0"]
 max_health = 100

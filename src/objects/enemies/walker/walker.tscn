@@ -213,7 +213,7 @@ _data = {
 radius = 8.06226
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dol11"]
-size = Vector2(39, 26)
+size = Vector2(54.3659, 26)
 
 [node name="Walker" type="Area2D" groups=["Enemy", "Stunable"]]
 scale = Vector2(4.1, 4.1)
@@ -223,6 +223,7 @@ input_pickable = false
 monitoring = false
 script = ExtResource("1_1tin7")
 death_reward = 15
+attack_range = 150.0
 variants = Array[SpriteFrames]([ExtResource("2_okmcb"), ExtResource("3_vodwb"), ExtResource("4_xxhx4"), ExtResource("5_wxt1u"), ExtResource("6_13lns"), ExtResource("7_4ag3u")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_q1dx7")]
@@ -256,7 +257,6 @@ input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
-position = Vector2(10.5, 0)
+position = Vector2(18.1829, 0)
 shape = SubResource("RectangleShape2D_dol11")
 debug_color = Color(0.960784, 0, 0.517647, 0.231373)
