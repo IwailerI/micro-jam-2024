@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 700.0
-@export var damage: int = 200
+@export var damage: int = 50
 @export var knockback: float = 900.0
 @export var lifetime: float = 2.0
 @export var fade_in: float = 0.5

@@ -222,6 +222,7 @@ collision_mask = 0
 input_pickable = false
 monitoring = false
 script = ExtResource("1_1tin7")
+death_reward = 15
 variants = Array[SpriteFrames]([ExtResource("2_okmcb"), ExtResource("3_vodwb"), ExtResource("4_xxhx4"), ExtResource("5_wxt1u"), ExtResource("6_13lns"), ExtResource("7_4ag3u")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_q1dx7")]

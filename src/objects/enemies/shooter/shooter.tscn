@@ -89,7 +89,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ok3gq"]
 resource_name = "punch"
-length = 0.90001
+length = 1.05
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -98,7 +98,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -136,7 +136,7 @@ tracks/3/path = NodePath("Sprite:frame")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -202,7 +202,7 @@ input_pickable = false
 monitoring = false
 script = ExtResource("1_sy55w")
 projectile_scene = ExtResource("2_1tkrl")
-death_reward = 30
+death_reward = 25
 speed = 130.0
 wanted_distance = 650.0
 perfect_distance = true

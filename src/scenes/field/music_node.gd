@@ -13,7 +13,7 @@ func _ready() -> void:
 		DrumsPlayer.play())
 
 func _physics_process(_delta: float) -> void:
-	if get_tree().get_nodes_in_group("Enemy").is_empty():
+	if get_tree().get_nodes_in_group("Enemy").is_empty() or get_tree().paused:
 		DrumsPlayer.volume_db = -100
 	else:
 		DrumsPlayer.volume_db = 0

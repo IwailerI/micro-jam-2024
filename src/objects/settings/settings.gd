@@ -30,6 +30,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_settings"):
+		if get_tree().paused and not visible:
+			return
+		get_tree().paused = not get_tree().paused
 		visible = not visible
 		get_viewport().set_input_as_handled()
 
