@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://n36rg8qqt5se"]
+[gd_scene load_steps=5 format=3 uid="uid://n36rg8qqt5se"]
 
 [ext_resource type="Script" path="res://src/scenes/death_screen/death_screen.gd" id="1_ksyt3"]
 [ext_resource type="PackedScene" uid="uid://ck8srae683dgo" path="res://src/objects/attribution/attribution.tscn" id="1_sdrbj"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="2_pqveg"]
+[ext_resource type="PackedScene" uid="uid://c47nge0r3cxc1" path="res://src/scenes/menu_music/menu_music.tscn" id="2_q31ej"]
 
 [node name="DeathScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -11,6 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ksyt3")
+
+[node name="MenuMusic" parent="." instance=ExtResource("2_q31ej")]
 
 [node name="Background" parent="." instance=ExtResource("2_pqveg")]
 

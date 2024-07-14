@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c47nge0r3cxc1"]
+
+[ext_resource type="AudioStream" uid="uid://bp3ar1yh6swbg" path="res://assets/music/menu_theme.wav" id="1_kb6qr"]
+[ext_resource type="Script" path="res://src/scenes/menu_music/menu_music.gd" id="2_kpio8"]
+
+[node name="MenuMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_kb6qr")
+autoplay = true
+script = ExtResource("2_kpio8")
