@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ci4fbfh76l0ey" path="res://src/objects/spells/splash/splash.tscn" id="1_o4t8i"]
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_q32jq"]
-[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_y5ou1"]
+[ext_resource type="Texture2D" uid="uid://dtntpaww0txbu" path="res://assets/char/spell_icons.png" id="1_v1whe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fa2jg"]
-atlas = ExtResource("1_y5ou1")
+atlas = ExtResource("1_v1whe")
 region = Rect2(36, 0, 12, 12)
 
 [resource]

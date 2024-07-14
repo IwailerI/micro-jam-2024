@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://bm17m8nh2avy6"]
 
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_3wfka"]
-[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_7v0cn"]
+[ext_resource type="Texture2D" uid="uid://dtntpaww0txbu" path="res://assets/char/spell_icons.png" id="1_cdeb3"]
 [ext_resource type="PackedScene" uid="uid://gfl3qfriaxd0" path="res://src/objects/spells/whirlpool/whirlpool.tscn" id="1_m4sbu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0h2n"]
-atlas = ExtResource("1_7v0cn")
+atlas = ExtResource("1_cdeb3")
 region = Rect2(24, 0, 12, 12)
 
 [resource]
