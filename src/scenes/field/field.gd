@@ -3,25 +3,15 @@ extends Node2D
 signal wave_completed
 
 @export var spawn_distance: float = 1200.0
+@export var waves: Array[SpawnWave]
 
 @onready var spawn_node: Node2D = %Spawned
 @onready var shop: SpellShop = %Shop
 @onready var spawn_timer: Timer = %SpawnTimer
-@onready var enemy_scenes: Array[PackedScene] = [
-	preload ("res://src/objects/enemies/walker/walker.tscn"),
-	preload ("res://src/objects/enemies/shooter/shooter.tscn"),
-	preload ("res://src/objects/enemies/walker/big_walker.tscn"),
-	preload ("res://src/objects/enemies/shooter/spawner.tscn"),
-]
 
-var is_wave_in_progress: bool = true:
-	set(v):
-		if not is_wave_in_progress and v and current_wave < 5:
-			current_wave += 1
-			enemies_to_spawn = 30 * current_wave
-		is_wave_in_progress = v
-var enemies_to_spawn: int = 30
-var current_wave: int = 1
+var is_wave_in_progress: bool = false
+var enemies_to_spawn: Array[PackedScene]
+var current_wave: int = 0
 var player: Player = null
 
 func _ready() -> void:
@@ -30,25 +20,38 @@ func _ready() -> void:
 	# currently beating wave 1 without spells is very hard
 	shop.start_session()
 
+	spawn_timer.timeout.connect(spawn_enemy)
+
+	start_wave()
+
 func _physics_process(_delta: float) -> void:
 	if not is_wave_in_progress:
 		return
 
-	if enemies_to_spawn > 0:
-		if not spawn_timer.is_stopped():
-			return
-		enemies_to_spawn -= 1
-		randomize()
-		var enemy: Node2D = enemy_scenes[(randi() % current_wave)&((randi() % 2) * 2)].instantiate()
-		spawn_node.add_child(enemy)
-		if not player:
-			player = get_tree().get_first_node_in_group("Player")
-			assert(player, "Spawning is impossible, player is null")
-		var random_direction := Vector2.from_angle(randf_range(0, 2 * PI))
-		enemy.global_position = player.global_position + random_direction * spawn_distance
-		spawn_timer.start(0.6 - 0.1 * current_wave)
-		return
-
-	if get_tree().get_nodes_in_group("Enemy").is_empty():
+	if enemies_to_spawn.is_empty() and get_tree().get_nodes_in_group("WaveEnemy").is_empty():
 		is_wave_in_progress = false
 		wave_completed.emit()
+		start_wave()
+
+func spawn_enemy() -> void:
+	if enemies_to_spawn.is_empty() or not is_wave_in_progress:
+		spawn_timer.stop()
+		return
+	var enemy: Node2D = (enemies_to_spawn.pop_back() as PackedScene).instantiate()
+
+	spawn_node.add_child(enemy)
+	if not player:
+		player = get_tree().get_first_node_in_group("Player")
+		assert(player, "spawning impossible, player not found")
+	var random_direction := Vector2.from_angle(randf_range(0, 2 * PI))
+	enemy.global_position = player.global_position + random_direction * spawn_distance
+
+func start_wave() -> void:
+	if current_wave >= waves.size():
+		print("Player has won!")
+		# TODO: win screen
+		return
+	current_wave += 1
+	is_wave_in_progress = true
+	enemies_to_spawn = waves[current_wave - 1].generate_enemy_sequence()
+	spawn_timer.start(0.6 - 0.1 * current_wave)

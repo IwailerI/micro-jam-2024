@@ -23,10 +23,12 @@ func _ready() -> void:
 		add_spell(right_spell))
 
 func start_session() -> void:
-	get_tree().paused = true
-
 	var p := get_tree().get_first_node_in_group("Player") as Player
-
+	if p.spells.size() >= 4:
+		return
+		
+	get_tree().paused = true
+	
 	var spells: Array[Spell] = spell_pool.duplicate()
 	for spell: Spell in p.spells:
 		spells.erase(spell)

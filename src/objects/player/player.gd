@@ -167,4 +167,4 @@ func update_spell_slots() -> void:
 		if spells.size() > i:
 			spell_slots[i].texture = spells[i].icon
 		else:
-			spell_slots[i].texture = null
+			spell_slots[i].texture = placeholder_spell_icon

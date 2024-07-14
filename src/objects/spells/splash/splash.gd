@@ -36,7 +36,5 @@ func _physics_process(_delta: float) -> void:
 		var distance := clampf(global_position.distance_to(node.global_position) / radius, 0, 1)
 		var direction := global_position.direction_to(node.global_position)
 
-		print("%s %s %s" % [node, distance, direction])
-
 		h.hurt(ceili(base_damage * damage_curve.sample(distance) * sm))
 		h.knockback(direction * base_knockback * damage_curve.sample(distance) * sm)
