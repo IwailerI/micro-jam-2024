@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cckghjt3n0lr6"]
+[gd_scene load_steps=7 format=3 uid="uid://cckghjt3n0lr6"]
 
 [ext_resource type="Script" path="res://src/scenes/win_screen/win_screen.gd" id="1_6rwbw"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="1_im2af"]
 [ext_resource type="Script" path="res://src/scenes/win_screen/rotating_sprite.gd" id="2_e6svx"]
+[ext_resource type="PackedScene" uid="uid://c47nge0r3cxc1" path="res://src/scenes/menu_music/menu_music.tscn" id="2_i660i"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="3_5wmro"]
 [ext_resource type="PackedScene" uid="uid://ck8srae683dgo" path="res://src/objects/attribution/attribution.tscn" id="4_as3x0"]
 
@@ -13,6 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6rwbw")
+
+[node name="MenuMusic" parent="." instance=ExtResource("2_i660i")]
+bus = &"Music"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
