@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=23 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
@@ -16,9 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://c46sj4cnfole0" path="res://src/objects/shop/shop.tscn" id="8_8pnca"]
 [ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="10_k4ibs"]
 [ext_resource type="PackedScene" uid="uid://fsoa28avohno" path="res://src/objects/enemy_hint/enemy_hint.tscn" id="12_ut6wl"]
-[ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="16_khnlk"]
-[ext_resource type="PackedScene" uid="uid://dcp11o4mh7fle" path="res://src/objects/enemies/shooter/spawner.tscn" id="17_7jcru"]
-[ext_resource type="PackedScene" uid="uid://c18edgrsraowo" path="res://src/objects/enemies/walker/big_walker.tscn" id="18_mq5n6"]
 
 [sub_resource type="Resource" id="Resource_rkgcq"]
 script = ExtResource("2_knf3v")
@@ -103,12 +100,6 @@ unique_name_in_owner = true
 [node name="Player" parent="Spawned" instance=ExtResource("1_74eao")]
 position = Vector2(306, -1055)
 speed = 500.0
-
-[node name="Shooter" parent="Spawned" instance=ExtResource("16_khnlk")]
-
-[node name="Spawner" parent="Spawned" instance=ExtResource("17_7jcru")]
-
-[node name="BigWalker" parent="Spawned" instance=ExtResource("18_mq5n6")]
 
 [node name="EnemyHint" parent="." instance=ExtResource("12_ut6wl")]
 unique_name_in_owner = true

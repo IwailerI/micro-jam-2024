@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c18edgrsraowo"]
+[gd_scene load_steps=12 format=3 uid="uid://c18edgrsraowo"]
 
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="1_r2rp0"]
 [ext_resource type="SpriteFrames" uid="uid://dt8uow8v0n7t4" path="res://src/resources/animated_sprites/big0.tres" id="2_t0pyr"]
@@ -208,6 +208,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_35i55"]
 radius = 10.8346
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pwmc"]
+size = Vector2(47.8333, 38.6667)
+
 [node name="BigWalker" instance=ExtResource("1_r2rp0")]
 scale = Vector2(6, 6)
 death_reward = 100
@@ -233,3 +236,7 @@ sprite_frames = ExtResource("2_t0pyr")
 
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_35i55")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(14.9167, 0)
+shape = SubResource("RectangleShape2D_6pwmc")
