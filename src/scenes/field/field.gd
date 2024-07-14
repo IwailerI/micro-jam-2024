@@ -24,10 +24,9 @@ func _ready() -> void:
 	call_deferred("deferred_ready")
 
 func deferred_ready() -> void:
-	await ScreenTransition.transition_finished
-
-	# currently beating wave 1 without spells is very hard
-	shop.start_session()
+	if ScreenTransition.is_in_transition():
+		await ScreenTransition.transition_finished
+	
 	start_wave()
 
 func _physics_process(_delta: float) -> void:
@@ -36,7 +35,9 @@ func _physics_process(_delta: float) -> void:
 
 	if enemies_to_spawn.is_empty() and get_tree().get_nodes_in_group("WaveEnemy").is_empty():
 		is_wave_in_progress = false
+		await get_tree().create_timer(1.0).timeout
 		wave_completed.emit()
+		await get_tree().create_timer(2.0).timeout
 		start_wave()
 
 func spawn_enemy() -> void:

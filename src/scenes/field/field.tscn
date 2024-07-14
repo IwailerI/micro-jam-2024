@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=18 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
@@ -11,6 +11,13 @@
 [ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="7_3g4jo"]
 [ext_resource type="PackedScene" uid="uid://c46sj4cnfole0" path="res://src/objects/shop/shop.tscn" id="8_8pnca"]
 [ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="10_k4ibs"]
+
+[sub_resource type="Resource" id="Resource_rkgcq"]
+script = ExtResource("2_knf3v")
+walker_count = 5
+shooter_count = 0
+big_walker_count = 0
+spawner_count = 0
 
 [sub_resource type="Resource" id="Resource_7tnbv"]
 script = ExtResource("2_knf3v")
@@ -49,7 +56,8 @@ spawner_count = 10
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_vku61")
-waves = Array[ExtResource("2_knf3v")]([SubResource("Resource_7tnbv"), SubResource("Resource_88ekr"), SubResource("Resource_mlmoi"), SubResource("Resource_kouxo"), SubResource("Resource_sjlqv")])
+spawn_distance = 2000.0
+waves = Array[ExtResource("2_knf3v")]([SubResource("Resource_rkgcq"), SubResource("Resource_7tnbv"), SubResource("Resource_88ekr"), SubResource("Resource_mlmoi"), SubResource("Resource_kouxo"), SubResource("Resource_sjlqv")])
 
 [node name="Background" parent="." instance=ExtResource("1_i7cva")]
 
