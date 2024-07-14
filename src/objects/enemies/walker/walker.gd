@@ -12,7 +12,9 @@ const WATER_DROP_SCENE := preload ("res://src/objects/waterdrop/water_drop.tscn"
 @export var enemy_distance: float = 80.0
 @export var knockback_accel: float = 700.0
 @export var damage: int = 30
+@export var variants: Array[SpriteFrames] = []
 
+var zombie := true
 var player: Player = null
 var stun_left: float = 0.0
 var knockback: Vector2 = Vector2.ZERO
@@ -21,6 +23,7 @@ var knockback: Vector2 = Vector2.ZERO
 @onready var hurtable: Hurtable = $Hurtable
 @onready var hurt_box: Area2D = get_node_or_null("HurtBox")
 @onready var visibility_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var sprite: AnimatedSprite2D = %Sprite
 
 func _ready() -> void:
 	add_to_group("WaveEnemy")
@@ -32,6 +35,11 @@ func _ready() -> void:
 		water_drop.global_position=global_position
 		water_drop.heal=death_reward
 		queue_free(), CONNECT_DEFERRED|CONNECT_ONE_SHOT)
+	
+	if zombie and variants.size() == 6:
+		sprite.sprite_frames = variants[randi() % 3 + 3]
+	else:
+		sprite.sprite_frames = variants[randi() % 3]
 
 func _physics_process(delta: float) -> void:
 	position += knockback * delta
@@ -61,7 +69,7 @@ func walk(delta: float) -> void:
 		global_position += global_position.direction_to(target_pos) * speed * delta
 	elif perfect_distance and player_dist_2 < wanted_distance * wanted_distance * 0.9:
 		global_position += global_position.direction_to(target_pos) * speed * delta
-	
+
 	rotation = player_dir.angle()
 
 	if player_dist_2 < attack_range * attack_range:
