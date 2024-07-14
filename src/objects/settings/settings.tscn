@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddylm13m6ulwd"]
+
+[ext_resource type="Script" path="res://src/objects/settings/settings.gd" id="1_ylmim"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mnv2u"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdrum"]
+font_size = 28
+
+[node name="Settings" type="CanvasLayer"]
+layer = 24
+script = ExtResource("1_ylmim")
+
+[node name="SettingsAutosave" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+label_settings = SubResource("LabelSettings_mnv2u")
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Close"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+label_settings = SubResource("LabelSettings_tdrum")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(64.47, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(39.37, 16)
+layout_mode = 2
+text = "100%"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Effects"
+
+[node name="EffectsSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 0.0
+step = 0.0
+
+[node name="EffectsLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[connection signal="timeout" from="SettingsAutosave" to="." method="save_settings"]
