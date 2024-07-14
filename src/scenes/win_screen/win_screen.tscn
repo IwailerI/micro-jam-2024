@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cckghjt3n0lr6"]
+[gd_scene load_steps=6 format=3 uid="uid://cckghjt3n0lr6"]
 
 [ext_resource type="Script" path="res://src/scenes/win_screen/win_screen.gd" id="1_6rwbw"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="1_im2af"]
 [ext_resource type="Script" path="res://src/scenes/win_screen/rotating_sprite.gd" id="2_e6svx"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="3_5wmro"]
+[ext_resource type="PackedScene" uid="uid://ck8srae683dgo" path="res://src/objects/attribution/attribution.tscn" id="4_as3x0"]
 
 [node name="WinScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -48,16 +49,8 @@ texture = ExtResource("1_im2af")
 offset = Vector2(0, -6)
 script = ExtResource("2_e6svx")
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Attribution" parent="VBoxContainer" instance=ExtResource("4_as3x0")]
 layout_mode = 2
-text = "Thank you for playing!"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Game by
-wailer | HOPOLOK | BobbyBob"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

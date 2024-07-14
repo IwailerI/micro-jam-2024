@@ -2,6 +2,7 @@ class_name Player
 extends Area2D
 
 const SOAP_MULTIPLIER: float = 1.5
+const DEATH_SCREEN := preload ("res://src/scenes/death_screen/death_screen.tscn")
 
 @export var speed: float = 200.0
 @export var base_attack_damage: int = 100
@@ -45,6 +46,10 @@ func _ready() -> void:
 	hurtable.health_changed.connect(func(h: int) -> void:
 		var t:=health_bar.create_tween()
 		t.tween_property(health_bar, "value", h, 0.2))
+
+	hurtable.died.connect(func() -> void:
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_packed(DEATH_SCREEN))
 
 	soap = false
 

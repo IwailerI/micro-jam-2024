@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ck8srae683dgo"]
+
+[node name="Attribution" type="Label"]
+text = "Thank you for playing!
+Game by
+wailer | HOPOLOK | BobbyBob"
+horizontal_alignment = 1

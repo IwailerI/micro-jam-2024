@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://n36rg8qqt5se"]
+
+[ext_resource type="Script" path="res://src/scenes/death_screen/death_screen.gd" id="1_ksyt3"]
+[ext_resource type="PackedScene" uid="uid://ck8srae683dgo" path="res://src/objects/attribution/attribution.tscn" id="1_sdrbj"]
+[ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="2_pqveg"]
+
+[node name="DeathScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksyt3")
+
+[node name="Background" parent="." instance=ExtResource("2_pqveg")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "The wizzard [shake]didn't make it[/shake]..."
+fit_content = true
+autowrap_mode = 0
+
+[node name="Attribution" parent="VBoxContainer" instance=ExtResource("1_sdrbj")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ReplayButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Replay"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu"
