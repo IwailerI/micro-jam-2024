@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Micro Jam 2024 Submission"
+config/name="Desert Tides"
+config/version="0.1"
 run/main_scene="res://src/scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.643366, 0.549096, 0.356619, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -31,7 +34,6 @@ gdscript/warnings/integer_division=0
 
 [display]
 
-window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
