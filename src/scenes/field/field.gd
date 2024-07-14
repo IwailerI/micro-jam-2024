@@ -2,6 +2,8 @@ extends Node2D
 
 signal wave_completed
 
+const WIN_SCREEN := preload ("res://src/scenes/win_screen/win_screen.tscn")
+
 @export var spawn_distance: float = 1200.0
 @export var waves: Array[SpawnWave]
 
@@ -47,11 +49,23 @@ func spawn_enemy() -> void:
 	enemy.global_position = player.global_position + random_direction * spawn_distance
 
 func start_wave() -> void:
+	if not player:
+		player = get_tree().get_first_node_in_group("Player")
+		assert(player, "starting wave impossible, player not found")
+
 	if current_wave >= waves.size():
-		print("Player has won!")
-		# TODO: win screen
+		var inst := WIN_SCREEN.instantiate()
+		inst.call("hydrate", player.hurtable.health)
+		change_scene_to_instance(inst)
 		return
 	current_wave += 1
 	is_wave_in_progress = true
 	enemies_to_spawn = waves[current_wave - 1].generate_enemy_sequence()
 	spawn_timer.start(0.6 - 0.1 * current_wave)
+
+func change_scene_to_instance(inst: Node) -> void:
+	var t := get_tree()
+	t.current_scene.queue_free()
+	t.current_scene.get_parent().remove_child(t.current_scene)
+	t.root.add_child(inst)
+	t.current_scene = inst

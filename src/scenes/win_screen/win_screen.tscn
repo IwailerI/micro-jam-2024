@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://cckghjt3n0lr6"]
+
+[ext_resource type="Script" path="res://src/scenes/win_screen/win_screen.gd" id="1_6rwbw"]
+[ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="1_im2af"]
+[ext_resource type="Script" path="res://src/scenes/win_screen/rotating_sprite.gd" id="2_e6svx"]
+[ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="3_5wmro"]
+
+[node name="WinScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6rwbw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="WaterLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]The wizard has survived with [b][wave][color=537bdf]%s[/color][/wave][/b] water left![/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/CenterContainer/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(256, 256)
+size_2d_override = Vector2i(64, 64)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CenterContainer/SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(32, 32)
+texture = ExtResource("1_im2af")
+offset = Vector2(0, -6)
+script = ExtResource("2_e6svx")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game by
+wailer | HOPOLOK | BobbyBob"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ReplayButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Replay"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu"
+
+[node name="Background" parent="." instance=ExtResource("3_5wmro")]
