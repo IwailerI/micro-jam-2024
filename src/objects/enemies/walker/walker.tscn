@@ -614,6 +614,15 @@ collision_mask = 0
 input_pickable = false
 monitoring = false
 script = ExtResource("1_1tin7")
+death_reward = null
+speed = null
+wanted_distance = null
+perfect_distance = null
+attack_range = null
+push_apart_force = null
+enemy_distance = null
+knockback_accel = null
+damage = null
 
 [node name="Hurtable" parent="." instance=ExtResource("2_q1dx7")]
 

@@ -11,7 +11,6 @@ func _physics_process(delta: float) -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("Player")
 		if not player:
-			print(player)
 			queue_free()
 			return
 	var player_dist_2 := global_position.distance_squared_to(player.global_position)

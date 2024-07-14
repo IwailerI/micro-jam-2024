@@ -1,34 +1,65 @@
-[gd_scene load_steps=15 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=17 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
 [ext_resource type="Script" path="res://src/scenes/field/field.gd" id="1_vku61"]
-[ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="2_kpp0x"]
+[ext_resource type="Script" path="res://src/objects/enemies/spawn_wave/spawn_wave.gd" id="2_knf3v"]
 [ext_resource type="Resource" uid="uid://58t8mvdpmsdf" path="res://src/resources/spells/bubble.tres" id="3_mlrv6"]
-[ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="3_x8fd0"]
-[ext_resource type="PackedScene" uid="uid://c18edgrsraowo" path="res://src/objects/enemies/walker/big_walker.tscn" id="4_5ii45"]
 [ext_resource type="Resource" uid="uid://ci62sthltqwh0" path="res://src/resources/spells/soap.tres" id="4_tevd7"]
 [ext_resource type="Resource" uid="uid://0dv2chts30gi" path="res://src/resources/spells/splash.tres" id="5_1hprq"]
-[ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="5_skfl8"]
 [ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="6_2cji7"]
-[ext_resource type="PackedScene" uid="uid://o47w8nqnttlx" path="res://src/objects/waterdrop/water_drop.tscn" id="6_kiims"]
 [ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="7_3g4jo"]
 [ext_resource type="PackedScene" uid="uid://c46sj4cnfole0" path="res://src/objects/shop/shop.tscn" id="8_8pnca"]
+[ext_resource type="Resource" uid="uid://do0beanxekrqs" path="res://src/resources/spells/waterball.tres" id="10_k4ibs"]
+
+[sub_resource type="Resource" id="Resource_7tnbv"]
+script = ExtResource("2_knf3v")
+walker_count = 30
+shooter_count = 0
+big_walker_count = 0
+spawner_count = 0
+
+[sub_resource type="Resource" id="Resource_88ekr"]
+script = ExtResource("2_knf3v")
+walker_count = 60
+shooter_count = 10
+big_walker_count = 0
+spawner_count = 0
+
+[sub_resource type="Resource" id="Resource_mlmoi"]
+script = ExtResource("2_knf3v")
+walker_count = 60
+shooter_count = 20
+big_walker_count = 5
+spawner_count = 0
+
+[sub_resource type="Resource" id="Resource_kouxo"]
+script = ExtResource("2_knf3v")
+walker_count = 100
+shooter_count = 5
+big_walker_count = 1
+spawner_count = 3
+
+[sub_resource type="Resource" id="Resource_sjlqv"]
+script = ExtResource("2_knf3v")
+walker_count = 100
+shooter_count = 30
+big_walker_count = 20
+spawner_count = 10
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_vku61")
-spawn_distance = null
+waves = Array[ExtResource("2_knf3v")]([SubResource("Resource_7tnbv"), SubResource("Resource_88ekr"), SubResource("Resource_mlmoi"), SubResource("Resource_kouxo"), SubResource("Resource_sjlqv")])
 
 [node name="Background" parent="." instance=ExtResource("1_i7cva")]
 
 [node name="Shop" parent="." instance=ExtResource("8_8pnca")]
 unique_name_in_owner = true
 visible = false
-spell_pool = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("3_mlrv6"), ExtResource("4_tevd7"), ExtResource("5_1hprq"), ExtResource("6_2cji7"), ExtResource("7_3g4jo")])
+spell_pool = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("3_mlrv6"), ExtResource("4_tevd7"), ExtResource("5_1hprq"), ExtResource("6_2cji7"), ExtResource("7_3g4jo"), ExtResource("10_k4ibs")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-one_shot = true
 
 [node name="Spawned" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -36,25 +67,3 @@ unique_name_in_owner = true
 [node name="Player" parent="Spawned" instance=ExtResource("1_74eao")]
 position = Vector2(306, -1055)
 speed = 500.0
-
-[node name="Walker" parent="Spawned" instance=ExtResource("2_kpp0x")]
-position = Vector2(33, 881)
-
-[node name="Walker2" parent="Spawned" instance=ExtResource("2_kpp0x")]
-position = Vector2(-806, 464)
-
-[node name="Walker3" parent="Spawned" instance=ExtResource("2_kpp0x")]
-position = Vector2(1148, 554)
-
-[node name="Shooter" parent="Spawned" instance=ExtResource("3_x8fd0")]
-position = Vector2(643, -1028)
-
-[node name="BigWalker" parent="Spawned" instance=ExtResource("4_5ii45")]
-position = Vector2(-462, -32)
-input_pickable = true
-
-[node name="EnemyProjectile" parent="Spawned" instance=ExtResource("5_skfl8")]
-position = Vector2(-573, -1069)
-
-[node name="WaterDrop" parent="Spawned" instance=ExtResource("6_kiims")]
-position = Vector2(35, -1051)

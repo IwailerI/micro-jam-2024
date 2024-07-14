@@ -3,6 +3,8 @@ class_name Walker
 
 const WATER_DROP_SCENE := preload ("res://src/objects/waterdrop/water_drop.tscn")
 
+signal knock_back_zeroed
+
 @export var death_reward: int = 10
 @export var speed: float = 150.0
 @export var wanted_distance: float = 100.0
@@ -22,17 +24,28 @@ var knockback: Vector2 = Vector2.ZERO
 @onready var hurt_box: Area2D = get_node_or_null("HurtBox")
 
 func _ready() -> void:
+	add_to_group("WaveEnemy")
 	hurtable.died.connect(func() -> void:
 		var water_drop: WaterDrop=WATER_DROP_SCENE.instantiate()
 		get_parent().add_child(water_drop)
 		water_drop.global_position=global_position
 		water_drop.heal=death_reward
+		remove_from_group("WaveEnemy")
 		remove_from_group("Enemy")
-		animation_player.play("death"), CONNECT_DEFERRED)
+
+		animation_player.play("death")
+		await knock_back_zeroed
+
+		set_deferred("monitorable", false)
+		set_deferred("collision_layer", 0)
+		set_deferred("collision_mask", 0)
+		set_physics_process(false), CONNECT_DEFERRED|CONNECT_ONE_SHOT)
 
 func _physics_process(delta: float) -> void:
 	position += knockback * delta
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_accel * delta)
+	if knockback.is_zero_approx():
+		knock_back_zeroed.emit()
 	push_apart(delta)
 	stun_left -= delta # TODO: stun animation?
 	if hurtable.is_dead or stun_left > 0.0:
