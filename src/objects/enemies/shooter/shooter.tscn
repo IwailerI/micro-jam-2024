@@ -624,6 +624,10 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.487806, -0.243902)
+scale = Vector2(1.2439, 2.04878)
+
 [node name="LeftArm" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, -16)
 sprite_frames = SubResource("SpriteFrames_ounsp")

@@ -18,6 +18,9 @@ var soap := false:
 		soap = v
 		soap_particles.emitting = v
 
+@onready var sfx_death: AudioStreamPlayer = %DeathSFX
+@onready var sfx_cast: AudioStreamPlayer = %CastSFX
+@onready var sfx_hurt: AudioStreamPlayer = %HurtSFX
 @onready var water_collectable_area: Area2D = %WaterCollectable
 @onready var soap_particles: CPUParticles2D = %SoapParticles
 @onready var hurt_box: Area2D = %HurtBox
@@ -47,11 +50,14 @@ func _ready() -> void:
 	hurtable.health_changed.connect(update_visual_health)
 	hurtable.max_health_changed.connect(func(_v: int) -> void:
 		update_visual_health(hurtable.health))
-
+	hurtable.damage_received.connect(func(_v: int) -> void:
+		sfx_hurt.play())
 	hurtable.died.connect(func() -> void:
 		DeathParticles.do(self)
 		hide()
-		await get_tree().create_timer(1.0).timeout
+		sfx_death.play()
+		await sfx_death.finished
+		await get_tree().create_timer(0.5).timeout
 		ScreenTransition.change_scene_to_packed(DEATH_SCREEN))
 
 	soap = false
@@ -162,6 +168,7 @@ func queue_spell(slot: int) -> void:
 	queued_spell = spells[slot]
 	is_attacking = true
 	animation_player.play("spell")
+	sfx_cast.play()
 
 func cast_spell() -> void:
 	if not queued_spell:

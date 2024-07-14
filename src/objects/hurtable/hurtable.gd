@@ -40,10 +40,11 @@ func hurt(amount: int) -> void:
 	if amount == 0:
 		return
 	health -= amount
-	damage_received.emit(amount)
 	health_changed.emit(health)
 	if is_dead:
 		died.emit()
+	else:
+		damage_received.emit(amount)
 
 func heal(amount: int, allow_overheal:=false, revive:=false) -> void:
 	assert(amount >= 0, "invalid heal amount")

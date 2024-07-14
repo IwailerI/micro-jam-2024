@@ -1,9 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=36 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
+[ext_resource type="AudioStream" uid="uid://clabdsc23wktj" path="res://assets/sound_effects/cast.wav" id="4_v0hof"]
+[ext_resource type="AudioStream" uid="uid://rwepqfjrv1lu" path="res://assets/sound_effects/injure.wav" id="5_sqr1w"]
 [ext_resource type="Texture2D" uid="uid://huqp2ku0jwfn" path="res://assets/animatons/player_idle.png" id="6_mw7ci"]
 [ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="6_ry72u"]
+[ext_resource type="AudioStream" uid="uid://cr5w48jiljmxf" path="res://assets/sound_effects/death.wav" id="7_goaoo"]
 [ext_resource type="Texture2D" uid="uid://djwag8voljomu" path="res://assets/animatons/player_walk.png" id="7_rbo4w"]
 [ext_resource type="Texture2D" uid="uid://cfdjnxrqdjpjj" path="res://assets/animatons/player_spell.png" id="8_2m7cf"]
 
@@ -360,6 +363,22 @@ input_pickable = false
 monitoring = false
 script = ExtResource("1_vdg4c")
 placeholder_spell_icon = SubResource("AtlasTexture_eo7rt")
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_goaoo")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="CastSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_v0hof")
+bus = &"SFX"
+
+[node name="HurtSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_sqr1w")
+volume_db = 5.0
 
 [node name="Hurtable" parent="." instance=ExtResource("2_o5oul")]
 unique_name_in_owner = true
