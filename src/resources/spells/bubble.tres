@@ -11,7 +11,7 @@ region = Rect2(48, 0, 12, 12)
 [resource]
 script = ExtResource("1_5f32w")
 name = "Bubble"
-cost = 150
+cost = 100
 shop_cost = 100
 object = ExtResource("1_gvsuh")
 icon = SubResource("AtlasTexture_4mkh1")

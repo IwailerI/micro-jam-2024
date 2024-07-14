@@ -4,7 +4,7 @@ extends Area2D
 @export var fuse: float = 1.5
 @export var base_knockback: float = 1000.0
 @export var knockback_curve: Curve
-@export var base_damage: float = 500.0
+@export var base_damage: float = 400.0
 @export var damage_curve: Curve
 
 var radius: float
