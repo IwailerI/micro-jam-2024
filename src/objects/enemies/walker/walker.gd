@@ -20,6 +20,7 @@ var knockback: Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hurtable: Hurtable = $Hurtable
 @onready var hurt_box: Area2D = get_node_or_null("HurtBox")
+@onready var visibility_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 func _ready() -> void:
 	add_to_group("WaveEnemy")
@@ -91,3 +92,6 @@ func attack() -> void:
 
 func stun(duration: float) -> void:
 	stun_left = maxf(stun_left, duration)
+
+func is_on_screen() -> bool:
+	return visibility_notifier.is_on_screen()

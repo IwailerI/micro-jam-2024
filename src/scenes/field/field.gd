@@ -10,6 +10,7 @@ const WIN_SCREEN := preload ("res://src/scenes/win_screen/win_screen.tscn")
 @onready var spawn_node: Node2D = %Spawned
 @onready var shop: SpellShop = %Shop
 @onready var spawn_timer: Timer = %SpawnTimer
+@onready var enemy_hint: EnemyHint = %EnemyHint
 
 var is_wave_in_progress: bool = false
 var enemies_to_spawn: Array[PackedScene]
@@ -26,19 +27,25 @@ func _ready() -> void:
 func deferred_ready() -> void:
 	if ScreenTransition.is_in_transition():
 		await ScreenTransition.transition_finished
-	
+
 	start_wave()
 
 func _physics_process(_delta: float) -> void:
 	if not is_wave_in_progress:
 		return
 
-	if enemies_to_spawn.is_empty() and get_tree().get_nodes_in_group("WaveEnemy").is_empty():
+	var enemies := get_tree().get_nodes_in_group("WaveEnemy")
+	if enemies_to_spawn.is_empty() and enemies.is_empty():
 		is_wave_in_progress = false
 		await get_tree().create_timer(1.0).timeout
 		wave_completed.emit()
 		await get_tree().create_timer(2.0).timeout
 		start_wave()
+
+	if not enemies.is_empty():
+		var arr_node: Array[Node2D] = []
+		arr_node.assign(enemies)
+		handle_enemy_hint(arr_node)
 
 func spawn_enemy() -> void:
 	if enemies_to_spawn.is_empty() or not is_wave_in_progress:
@@ -74,3 +81,11 @@ func change_scene_to_instance(inst: Node) -> void:
 	t.current_scene.get_parent().remove_child(t.current_scene)
 	t.root.add_child(inst)
 	t.current_scene = inst
+
+func handle_enemy_hint(enemies: Array[Node2D]) -> void:
+	for enemy: Walker in enemies:
+		if enemy.is_on_screen():
+			enemy_hint.stop()
+			return
+
+	enemy_hint.process_targets(enemies)

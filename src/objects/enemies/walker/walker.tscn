@@ -614,15 +614,6 @@ collision_mask = 0
 input_pickable = false
 monitoring = false
 script = ExtResource("1_1tin7")
-death_reward = null
-speed = null
-wanted_distance = null
-perfect_distance = null
-attack_range = null
-push_apart_force = null
-enemy_distance = null
-knockback_accel = null
-damage = null
 
 [node name="Hurtable" parent="." instance=ExtResource("2_q1dx7")]
 
@@ -632,6 +623,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ausbb")
 }
 autoplay = "idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.487806, -0.243903)
+scale = Vector2(1.2439, 2.04878)
 
 [node name="LeftArm" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, -16)
