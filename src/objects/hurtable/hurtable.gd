@@ -6,11 +6,15 @@ signal revived
 signal damage_received(amount: int)
 signal heal_received(amount: int)
 signal health_changed(new_health: int)
+signal max_health_changed(new_max_health: int)
 
 const GROUP: StringName = &"Hurtable"
 
 ## Maximum health of this entity.
-@export var max_health: int = 200
+@export var max_health: int = 200:
+	set(v):
+		max_health = v
+		max_health_changed.emit(v)
 
 ## Current health of this entity. Should not be set directly.
 var health: int = 0
@@ -74,4 +78,7 @@ func knockback(amount: Vector2) -> bool:
 	return false
 
 func remove_overheal() -> void:
+	var was := health
 	health = mini(health, max_health)
+	if was != health:
+		health_changed.emit(health)

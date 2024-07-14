@@ -471,7 +471,8 @@ step = 0.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanbasLayer/UI"]
+[node name="HealthLabel" type="Label" parent="CanbasLayer/UI"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "1000/1000"
