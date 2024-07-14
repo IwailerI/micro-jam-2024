@@ -331,6 +331,7 @@ atlas = ExtResource("6_ry72u")
 region = Rect2(72, 0, 12, 12)
 
 [node name="Player" type="Area2D" groups=["Player"]]
+z_index = 2
 collision_mask = 0
 input_pickable = false
 monitoring = false

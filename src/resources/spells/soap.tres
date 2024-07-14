@@ -12,5 +12,7 @@ region = Rect2(60, 0, 12, 12)
 script = ExtResource("1_05dy4")
 name = "SOAP"
 cost = 50
+shop_cost = 100
 object = ExtResource("1_y5w2r")
 icon = SubResource("AtlasTexture_8prak")
+description = "A powerful spell to conquer your enemies!"

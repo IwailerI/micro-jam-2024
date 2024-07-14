@@ -12,5 +12,7 @@ region = Rect2(12, 0, 12, 12)
 script = ExtResource("1_v4tje")
 name = "The Great Tsunami"
 cost = 300
+shop_cost = 100
 object = ExtResource("1_ynat2")
 icon = SubResource("AtlasTexture_l6gck")
+description = "A powerful spell to conquer your enemies!"

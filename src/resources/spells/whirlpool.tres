@@ -12,5 +12,7 @@ region = Rect2(24, 0, 12, 12)
 script = ExtResource("1_3wfka")
 name = "Whirlpool"
 cost = 200
+shop_cost = 100
 object = ExtResource("1_m4sbu")
 icon = SubResource("AtlasTexture_g0h2n")
+description = "A powerful spell to conquer your enemies!"
