@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Desert Tides"
-config/version="0.1"
+config/version="1.0.0"
 run/main_scene="res://src/scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.643366, 0.549096, 0.356619, 1)
