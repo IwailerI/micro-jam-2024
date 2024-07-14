@@ -5,9 +5,9 @@ signal wave_completed
 @export var spawn_distance: float = 1200.0
 
 @onready var spawn_node: Node2D = %Spawned
+@onready var shop: SpellShop = %Shop
 @onready var spawn_timer: Timer = %SpawnTimer
-@onready var enemy_scenes: Array[PackedScene] = \
-[
+@onready var enemy_scenes: Array[PackedScene] = [
 	preload ("res://src/objects/enemies/walker/walker.tscn"),
 	preload ("res://src/objects/enemies/shooter/shooter.tscn"),
 	preload ("res://src/objects/enemies/walker/big_walker.tscn"),
@@ -19,9 +19,16 @@ var is_wave_in_progress: bool = true:
 		if not is_wave_in_progress and v and current_wave < 5:
 			current_wave += 1
 			enemies_to_spawn = 30 * current_wave
+		is_wave_in_progress = v
 var enemies_to_spawn: int = 30
 var current_wave: int = 1
 var player: Player = null
+
+func _ready() -> void:
+	wave_completed.connect(shop.start_session)
+
+	# currently beating wave 1 without spells is very hard
+	shop.start_session()
 
 func _physics_process(_delta: float) -> void:
 	if not is_wave_in_progress:
@@ -41,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 		enemy.global_position = player.global_position + random_direction * spawn_distance
 		spawn_timer.start(0.6 - 0.1 * current_wave)
 		return
-	
+
 	if get_tree().get_nodes_in_group("Enemy").is_empty():
 		is_wave_in_progress = false
 		wave_completed.emit()

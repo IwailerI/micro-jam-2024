@@ -27,6 +27,7 @@ func _ready() -> void:
 		get_parent().add_child(water_drop)
 		water_drop.global_position=global_position
 		water_drop.heal=death_reward
+		remove_from_group("Enemy")
 		animation_player.play("death"), CONNECT_DEFERRED)
 
 func _physics_process(delta: float) -> void:

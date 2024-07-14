@@ -17,10 +17,12 @@
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_vku61")
+spawn_distance = null
 
 [node name="Background" parent="." instance=ExtResource("1_i7cva")]
 
 [node name="Shop" parent="." instance=ExtResource("8_8pnca")]
+unique_name_in_owner = true
 visible = false
 spell_pool = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("3_mlrv6"), ExtResource("4_tevd7"), ExtResource("5_1hprq"), ExtResource("6_2cji7"), ExtResource("7_3g4jo")])
 
