@@ -1,10 +1,18 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://eq7eyq6hs16e"]
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://eq7eyq6hs16e"]
 
+[ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_3wmq6"]
 [ext_resource type="Script" path="res://src/objects/spells/spell.gd" id="1_v4tje"]
 [ext_resource type="PackedScene" uid="uid://mplm77roh3vh" path="res://src/objects/spells/tsunami/tsunami.tscn" id="1_ynat2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6gck"]
+atlas = ExtResource("1_3wmq6")
+region = Rect2(12, 0, 12, 12)
 
 [resource]
 script = ExtResource("1_v4tje")
 name = "The Great Tsunami"
 cost = 300
+shop_cost = 100
 object = ExtResource("1_ynat2")
+icon = SubResource("AtlasTexture_l6gck")
+description = "A powerful spell to conquer your enemies!"

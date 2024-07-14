@@ -1,18 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://bun5unmqberbc"]
+[gd_scene load_steps=15 format=3 uid="uid://bun5unmqberbc"]
 
 [ext_resource type="PackedScene" uid="uid://iup832stpqv3" path="res://src/objects/player/player.tscn" id="1_74eao"]
 [ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_i7cva"]
 [ext_resource type="Script" path="res://src/scenes/field/field.gd" id="1_vku61"]
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="2_kpp0x"]
+[ext_resource type="Resource" uid="uid://58t8mvdpmsdf" path="res://src/resources/spells/bubble.tres" id="3_mlrv6"]
 [ext_resource type="PackedScene" uid="uid://d75tfrs6ahsq" path="res://src/objects/enemies/shooter/shooter.tscn" id="3_x8fd0"]
 [ext_resource type="PackedScene" uid="uid://c18edgrsraowo" path="res://src/objects/enemies/walker/big_walker.tscn" id="4_5ii45"]
+[ext_resource type="Resource" uid="uid://ci62sthltqwh0" path="res://src/resources/spells/soap.tres" id="4_tevd7"]
+[ext_resource type="Resource" uid="uid://0dv2chts30gi" path="res://src/resources/spells/splash.tres" id="5_1hprq"]
 [ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="5_skfl8"]
+[ext_resource type="Resource" uid="uid://eq7eyq6hs16e" path="res://src/resources/spells/tsunami.tres" id="6_2cji7"]
 [ext_resource type="PackedScene" uid="uid://o47w8nqnttlx" path="res://src/objects/waterdrop/water_drop.tscn" id="6_kiims"]
+[ext_resource type="Resource" uid="uid://bm17m8nh2avy6" path="res://src/resources/spells/whirlpool.tres" id="7_3g4jo"]
+[ext_resource type="PackedScene" uid="uid://c46sj4cnfole0" path="res://src/objects/shop/shop.tscn" id="8_8pnca"]
 
 [node name="Field" type="Node2D"]
 script = ExtResource("1_vku61")
 
 [node name="Background" parent="." instance=ExtResource("1_i7cva")]
+
+[node name="Shop" parent="." instance=ExtResource("8_8pnca")]
+visible = false
+spell_pool = Array[Resource("res://src/objects/spells/spell.gd")]([ExtResource("3_mlrv6"), ExtResource("4_tevd7"), ExtResource("5_1hprq"), ExtResource("6_2cji7"), ExtResource("7_3g4jo")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

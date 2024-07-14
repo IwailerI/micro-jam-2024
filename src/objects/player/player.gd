@@ -3,11 +3,12 @@ extends Area2D
 
 const SOAP_MULTIPLIER: float = 1.5
 
-@export var spells: Array[Spell] = []
 @export var speed: float = 200.0
 @export var base_attack_damage: int = 100
 @export var base_attack_knockback: float = 500.0
+@export var placeholder_spell_icon: Texture
 
+var spells: Array[Spell] = []
 var using_dual_stick := false
 var is_attacking := false
 var queued_spell: Spell = null
@@ -23,12 +24,18 @@ var soap := false:
 @onready var hurtable: Hurtable = %Hurtable
 @onready var spell_cast_marker: Node2D = %SpellCastPosition
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var spell_slots: Array[TextureRect] = [
+	%SpellSlot1,
+	%SpellSlot2,
+	%SpellSlot3,
+	%SpellSlot4,
+]
 
 func _ready() -> void:
 	water_collectable_area.area_entered.connect(func(water_drop: Area2D) -> void:
-		hurtable.heal(water_drop.heal)
+		hurtable.heal(water_drop["heal"] as int)
 		water_drop.queue_free())
-	
+
 	animation_player.animation_finished.connect(func(_name: StringName) -> void:
 		animation_player.play("idle")
 		is_attacking=false)
@@ -40,6 +47,8 @@ func _ready() -> void:
 		t.tween_property(health_bar, "value", h, 0.2))
 
 	soap = false
+
+	update_spell_slots()
 
 	DebugMenu.label(self, func(l: RichTextLabel) -> void:
 		l.text="Player Health: %d/%d" % [hurtable.health, hurtable.max_health])
@@ -125,7 +134,7 @@ func hurt() -> void:
 		var h: Hurtable = node.get_node("Hurtable")
 		h.hurt(ceili(base_attack_damage * multiplier))
 		h.knockback((global_position.direction_to(node.global_position) * base_attack_knockback))
-	
+
 	soap = false
 
 func queue_spell(slot: int) -> void:
@@ -151,3 +160,11 @@ func cast_spell() -> void:
 	)
 	hurtable.hurt(queued_spell.cost)
 	queued_spell = null
+
+func update_spell_slots() -> void:
+	assert(spells.size() <= 4)
+	for i: int in 4:
+		if spells.size() > i:
+			spell_slots[i].texture = spells[i].icon
+		else:
+			spell_slots[i].texture = null
