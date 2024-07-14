@@ -21,7 +21,7 @@ func _ready() -> void:
 	button_right.pressed.connect(func() -> void:
 		add_spell(right_spell))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spell"):
 		start_session()
 

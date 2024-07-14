@@ -1,10 +1,11 @@
+class_name WaterDrop
 extends Area2D
 
-const MAGNETIC_SPEED: float = 400.0 
+const MAGNETIC_SPEED: float = 400.0
 const PICKABLE_DISTANCE: float = 500.0
 
 var player: Player = null
-var heal: int = 0 
+var heal: int = 0
 
 func _physics_process(delta: float) -> void:
 	if not player:
