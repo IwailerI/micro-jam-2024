@@ -21,6 +21,7 @@ var soap := false:
 @onready var sfx_death: AudioStreamPlayer = %DeathSFX
 @onready var sfx_cast: AudioStreamPlayer = %CastSFX
 @onready var sfx_hurt: AudioStreamPlayer = %HurtSFX
+@onready var sfx_punch: AudioStreamPlayer = %PunchSFX
 @onready var water_collectable_area: Area2D = %WaterCollectable
 @onready var soap_particles: CPUParticles2D = %SoapParticles
 @onready var hurt_box: Area2D = %HurtBox
@@ -147,6 +148,7 @@ func get_secondary_input() -> Vector2:
 
 ## Call this method to hurt all entities in player's hurtbox
 func hurt() -> void:
+	sfx_punch.play()
 	var nodes: Array[Node2D] = hurt_box.get_overlapping_bodies()
 	nodes.append_array(hurt_box.get_overlapping_areas())
 

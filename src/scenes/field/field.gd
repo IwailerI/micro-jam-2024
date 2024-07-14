@@ -52,6 +52,8 @@ func spawn_enemy() -> void:
 		spawn_timer.stop()
 		return
 	var enemy: Node2D = (enemies_to_spawn.pop_back() as PackedScene).instantiate()
+	if "zombie" in enemy:
+		enemy["zombie"] = false
 
 	spawn_node.add_child(enemy)
 	if not player:
