@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjlo0o8v6xxil"]
+
+[ext_resource type="Script" path="res://src/scenes/tutorial/tutorial.gd" id="1_fc0op"]
+[ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="1_fobiu"]
+
+[node name="Tutorial" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fc0op")
+
+[node name="Background" parent="." instance=ExtResource("1_fobiu")]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(940, 560)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]You are a wizard trying to surive in a desert!
+
+[img=200]uid://huqp2ku0jwfn[/img]
+
+Move with WASD attack with left mouse button.
+Water is required to survive in the desert.
+You will encounter powerful spells on your journey, but the will cost water to use.
+Try to survive as long as possible, because help is on the way!"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Venture Forth"

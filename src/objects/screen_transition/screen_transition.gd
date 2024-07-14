@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal transition_finished
+
 @onready var anim: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
@@ -20,6 +22,7 @@ func do_transition(loader: Callable) -> void:
 	await anim.animation_finished
 	get_tree().paused = false
 	hide()
+	transition_finished.emit()
 
 func change_scene_to_packed(packed: PackedScene) -> void:
 	await do_transition(func() -> void:

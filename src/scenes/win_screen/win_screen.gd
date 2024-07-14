@@ -1,7 +1,7 @@
 extends CenterContainer
 
 @onready var menu := load("res://src/scenes/main_menu/main_menu.tscn")
-@onready var main := load("res://src/scenes/field/field.tscn")
+@onready var main := load("res://src/scenes/tutorial/tutorial.tscn")
 
 @onready var replay_button: Button = %ReplayButton
 @onready var menu_button: Button = %MenuButton

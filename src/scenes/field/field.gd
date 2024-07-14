@@ -19,13 +19,15 @@ var player: Player = null
 func _ready() -> void:
 	wave_completed.connect(shop.start_session)
 
-	# currently beating wave 1 without spells is very hard
-	shop.start_session()
-
 	spawn_timer.timeout.connect(spawn_enemy)
 
-	waves.resize(1)
+	call_deferred("deferred_ready")
 
+func deferred_ready() -> void:
+	await ScreenTransition.transition_finished
+
+	# currently beating wave 1 without spells is very hard
+	shop.start_session()
 	start_wave()
 
 func _physics_process(_delta: float) -> void:

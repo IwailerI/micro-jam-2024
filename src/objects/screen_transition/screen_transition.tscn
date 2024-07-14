@@ -7,6 +7,31 @@
 [ext_resource type="FontFile" uid="uid://d3iw1763pck70" path="res://assets/font/main.otf" id="4_4ico0"]
 [ext_resource type="Texture2D" uid="uid://dk1jd4spt7y4d" path="res://assets/screen_transition/pure_sand.png" id="4_igmhq"]
 
+[sub_resource type="Animation" id="Animation_mv7c5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sand:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-105, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Water:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-845, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_qbd7e"]
 resource_name = "transition_in"
 length = 0.6
@@ -30,31 +55,6 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(-998, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_mv7c5"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sand:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-105, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Water:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-845, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -110,7 +110,7 @@ libraries = {
 }
 
 [node name="Sand" type="VBoxContainer" parent="."]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -105.0
@@ -145,12 +145,12 @@ text = "Loading..."
 label_settings = SubResource("LabelSettings_3lhoh")
 
 [node name="Water" type="VBoxContainer" parent="."]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -845.0
-offset_right = -762.0
-offset_bottom = -1209.0
+offset_right = -754.0
+offset_bottom = -1219.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
