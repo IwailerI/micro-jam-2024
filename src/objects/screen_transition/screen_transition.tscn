@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=3 uid="uid://cku6v4ux1srx"]
+
+[ext_resource type="Script" path="res://src/objects/screen_transition/screen_transition.gd" id="1_aafcr"]
+[ext_resource type="Texture2D" uid="uid://b14r23td1unse" path="res://assets/screen_transition/pure_water.png" id="1_o7rgq"]
+[ext_resource type="Texture2D" uid="uid://doo5jlglho8tb" path="res://assets/screen_transition/water_end.png" id="2_ofceo"]
+[ext_resource type="Texture2D" uid="uid://dasiieodcgj6t" path="res://assets/screen_transition/sand_end.png" id="3_rwg1w"]
+[ext_resource type="FontFile" uid="uid://d3iw1763pck70" path="res://assets/font/main.otf" id="4_4ico0"]
+[ext_resource type="Texture2D" uid="uid://dk1jd4spt7y4d" path="res://assets/screen_transition/pure_sand.png" id="4_igmhq"]
+
+[sub_resource type="Animation" id="Animation_qbd7e"]
+resource_name = "transition_in"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sand:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(681, -0.4, 30.4777, 0.4, -30.4777, -105, -0.4, 30.5453, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Water:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-998, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mv7c5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sand:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-105, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Water:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-845, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_d44uo"]
+resource_name = "transition_out"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sand:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 0, 0),
+"points": PackedFloat32Array(-105, 0, 0, 0, 0, -105, 0, 0, 0, 0, 681, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.342694, 0.347113)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Water:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-845, -0.25, 0, 0.25, 0, -48.0001, -0.0547527, -26.5657, 0.279091, 135.414, -845, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.342694, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7i7m"]
+_data = {
+"RESET": SubResource("Animation_mv7c5"),
+"transition_in": SubResource("Animation_qbd7e"),
+"transition_out": SubResource("Animation_d44uo")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_3lhoh"]
+font = ExtResource("4_4ico0")
+font_size = 86
+font_color = Color(0.85098, 0.627451, 0.4, 0)
+outline_size = 9
+outline_color = Color(0.858808, 0.568627, 0.317525, 1)
+
+[node name="ScreenTransition" type="CanvasLayer"]
+process_mode = 3
+layer = 15
+script = ExtResource("1_aafcr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_y7i7m")
+}
+
+[node name="Sand" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_right = -763.0
+offset_bottom = -496.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+metadata/_edit_group_ = true
+
+[node name="SandCap" type="TextureRect" parent="Sand"]
+layout_mode = 2
+texture = ExtResource("3_rwg1w")
+stretch_mode = 1
+
+[node name="SandFill" type="TextureRect" parent="Sand"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_igmhq")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Sand/SandFill"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 91.3333
+offset_right = 352.0
+offset_bottom = 174.333
+rotation = -0.106889
+text = "Loading..."
+label_settings = SubResource("LabelSettings_3lhoh")
+
+[node name="Water" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -845.0
+offset_right = -762.0
+offset_bottom = -1209.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+metadata/_edit_group_ = true
+
+[node name="WaterFill" type="TextureRect" parent="Water"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_o7rgq")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="WaterCap" type="TextureRect" parent="Water"]
+layout_mode = 2
+texture = ExtResource("2_ofceo")
+stretch_mode = 1

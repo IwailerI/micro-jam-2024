@@ -7,10 +7,8 @@ extends CenterContainer
 @onready var menu_button: Button = %MenuButton
 
 func _ready() -> void:
-	get_tree().paused = false
-
-	replay_button.pressed.connect(get_tree().change_scene_to_packed.bind(main))
-	menu_button.pressed.connect(get_tree().change_scene_to_packed.bind(menu))
+	replay_button.pressed.connect(ScreenTransition.change_scene_to_packed.bind(main))
+	menu_button.pressed.connect(ScreenTransition.change_scene_to_packed.bind(menu))
 
 func hydrate(water_amount: int) -> void:
 	call_deferred("_hydrate", water_amount)

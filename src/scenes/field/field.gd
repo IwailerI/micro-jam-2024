@@ -24,6 +24,8 @@ func _ready() -> void:
 
 	spawn_timer.timeout.connect(spawn_enemy)
 
+	waves.resize(1)
+
 	start_wave()
 
 func _physics_process(_delta: float) -> void:
@@ -56,7 +58,7 @@ func start_wave() -> void:
 	if current_wave >= waves.size():
 		var inst := WIN_SCREEN.instantiate()
 		inst.call("hydrate", player.hurtable.health)
-		change_scene_to_instance(inst)
+		ScreenTransition.do_transition(change_scene_to_instance.bind(inst))
 		return
 	current_wave += 1
 	is_wave_in_progress = true
