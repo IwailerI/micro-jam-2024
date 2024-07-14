@@ -49,6 +49,8 @@ func _ready() -> void:
 		update_visual_health(hurtable.health))
 
 	hurtable.died.connect(func() -> void:
+		DeathParticles.do(self)
+		hide()
 		await get_tree().create_timer(1.0).timeout
 		ScreenTransition.change_scene_to_packed(DEATH_SCREEN))
 
