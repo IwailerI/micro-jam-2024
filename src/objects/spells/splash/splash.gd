@@ -9,6 +9,7 @@ var soap := false
 
 @onready var lifetime: float = $Particles["lifetime"]
 @onready var radius: float = $CollisionShape2D["shape"]["radius"] * scale.x
+@onready var sfx: AudioStreamPlayer = %ExplodeSFX
 
 func _ready() -> void:
 	var p: Player = get_tree().get_first_node_in_group("Player")
@@ -23,6 +24,8 @@ func _physics_process(_delta: float) -> void:
 	# janky, but works
 	set_physics_process(false)
 	await get_tree().physics_frame
+
+	sfx.play()
 
 	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
 

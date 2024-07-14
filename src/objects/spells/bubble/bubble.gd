@@ -13,6 +13,7 @@ var soap := false
 @onready var tail_particles: CPUParticles2D = $CPUParticles2D
 @onready var detonation_particles: CPUParticles2D = $DetonationParticles
 @onready var detonation_area: Area2D = $DetonationArea
+@onready var sfx: AudioStreamPlayer = %ExplodeSFX
 
 func _ready() -> void:
 	body_entered.connect(func(_arg: Object) -> void: detonate())
@@ -28,6 +29,8 @@ func detonate() -> void:
 	sprite.hide()
 	detonation_particles.emitting = true
 	tail_particles.emitting = false
+
+	sfx.play()
 
 	var nodes: Array[Node2D] = detonation_area.get_overlapping_bodies()
 	nodes.append_array(detonation_area.get_overlapping_areas())

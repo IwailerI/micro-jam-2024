@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://22ot6f12mdrf"]
+[gd_scene load_steps=13 format=3 uid="uid://22ot6f12mdrf"]
 
 [ext_resource type="Script" path="res://src/objects/spells/waterball/waterball.gd" id="1_gayra"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_m4xve"]
 [ext_resource type="Texture2D" uid="uid://xuolwinfl8un" path="res://assets/indev/temp_waterball.png" id="3_36ow4"]
+[ext_resource type="AudioStream" uid="uid://dy0vxfbb1mso4" path="res://assets/sound_effects/explosion.wav" id="3_n48ic"]
 [ext_resource type="Texture2D" uid="uid://bnt6imouvgbu2" path="res://assets/indev/temp_snowflake.png" id="4_haf7f"]
 
 [sub_resource type="Curve" id="Curve_a6bjh"]
@@ -42,6 +43,12 @@ damage_curve = SubResource("Curve_2fbaq")
 
 [node name="Hurtable" parent="." instance=ExtResource("2_m4xve")]
 max_health = 1
+
+[node name="ExplodeSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_n48ic")
+volume_db = 10.0
+bus = &"SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7, 0)
