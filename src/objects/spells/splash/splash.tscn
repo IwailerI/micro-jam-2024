@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci4fbfh76l0ey"]
+[gd_scene load_steps=9 format=3 uid="uid://ci4fbfh76l0ey"]
 
 [ext_resource type="Texture2D" uid="uid://bnt6imouvgbu2" path="res://assets/indev/temp_snowflake.png" id="1_jvtqg"]
 [ext_resource type="Script" path="res://src/objects/spells/splash/splash.gd" id="1_rvx1s"]
+[ext_resource type="AudioStream" uid="uid://dy0vxfbb1mso4" path="res://assets/sound_effects/explosion.wav" id="2_0a1ik"]
 
 [sub_resource type="Curve" id="Curve_4rhdq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.856383, 0.739733), -0.907598, -0.907598, 0, 0, Vector2(1, 0), -5.66773, 0.0, 0, 0]
@@ -30,6 +31,12 @@ monitorable = false
 script = ExtResource("1_rvx1s")
 damage_curve = SubResource("Curve_4rhdq")
 knockback_curve = SubResource("Curve_14mw3")
+
+[node name="ExplodeSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_0a1ik")
+volume_db = 10.0
+bus = &"SFX"
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 emitting = false

@@ -21,7 +21,10 @@ func _physics_process(delta: float) -> void:
 
 	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
 
-	for node: Node2D in sticky:
+	for node: Node2D in sticky.keys():
+		if not node:
+			sticky.erase(node)
+			continue
 		node.global_position = global_position + sticky[node]
 		var hurtable: Hurtable = node.get_node("Hurtable")
 		hurtable.hurt(ceili(damage / lifetime * delta * sm))

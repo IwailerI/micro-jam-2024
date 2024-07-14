@@ -14,6 +14,7 @@ var soap := false
 @onready var tail_particles: CPUParticles2D = $CPUParticles2D
 @onready var detonation_particles: CPUParticles2D = $DetonationParticles
 @onready var detonation_area: Area2D = $DetonationArea
+@onready var sfx: AudioStreamPlayer = %ExplodeSFX
 
 func _ready() -> void:
 	body_entered.connect(func(_arg: Object) -> void: detonate())
@@ -35,6 +36,8 @@ func detonate() -> void:
 
 	var nodes: Array[Node2D] = detonation_area.get_overlapping_bodies()
 	nodes.append_array(detonation_area.get_overlapping_areas())
+
+	sfx.play()
 
 	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
 

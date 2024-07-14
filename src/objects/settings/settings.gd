@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+const MASTER_BUS: int = 0
+const MUSIC_BUS: int = 1
+const SFX_BUS: int = 3
+
 @onready var master_slider: HSlider = %MasterSlider
 @onready var master_label: Label = %MasterLabel
 @onready var music_slider: HSlider = %MusicSlider
@@ -12,13 +16,13 @@ func _ready() -> void:
 	hide()
 	master_slider.value_changed.connect(func(v: float) -> void:
 		master_label.text="%d%%" % remap(v, -80, 0, 0, 100)
-		AudioServer.set_bus_volume_db(0, v))
+		AudioServer.set_bus_volume_db(MASTER_BUS, v))
 	music_slider.value_changed.connect(func(v: float) -> void:
 		music_label.text="%d%%" % remap(v, -80, 0, 0, 100)
-		AudioServer.set_bus_volume_db(1, v))
+		AudioServer.set_bus_volume_db(MUSIC_BUS, v))
 	effects_slider.value_changed.connect(func(v: float) -> void:
 		effects_label.text="%d%%" % remap(v, -80, 0, 0, 100)
-		AudioServer.set_bus_volume_db(2, v))
+		AudioServer.set_bus_volume_db(SFX_BUS, v))
 	close_button.pressed.connect(hide)
 	tree_exiting.connect(save_settings)
 
@@ -31,9 +35,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func save_settings() -> void:
 	var data := {
-		"audio/master": AudioServer.get_bus_volume_db(0),
-		"audio/music": AudioServer.get_bus_volume_db(1),
-		"audio/effects": AudioServer.get_bus_volume_db(2),
+		"audio/master": AudioServer.get_bus_volume_db(MASTER_BUS),
+		"audio/music": AudioServer.get_bus_volume_db(MUSIC_BUS),
+		"audio/effects": AudioServer.get_bus_volume_db(SFX_BUS),
 	}
 	var f := FileAccess.open("user://settings.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(data, "\t"))
