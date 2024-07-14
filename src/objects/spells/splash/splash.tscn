@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dy0vxfbb1mso4" path="res://assets/sound_effects/explosion.wav" id="2_0a1ik"]
 
 [sub_resource type="Curve" id="Curve_4rhdq"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.856383, 0.739733), -0.907598, -0.907598, 0, 0, Vector2(1, 0), -5.66773, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.111653, 0, 0, Vector2(0.810526, 0.527472), -0.822511, -2.02056, 0, 0, Vector2(1, 0), -0.0379618, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_14mw3"]

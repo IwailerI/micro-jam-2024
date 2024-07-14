@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 700.0
-@export var damage: int = 400
+@export var damage: int = 200
 @export var knockback: float = 900.0
 @export var lifetime: float = 2.0
 @export var fade_in: float = 0.5
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 
 	var sm := Player.SOAP_MULTIPLIER if soap else 1.0
 
-	for node: Node2D in sticky.keys():
+	for node: Variant in sticky.keys():
 		if not node:
 			sticky.erase(node)
 			continue

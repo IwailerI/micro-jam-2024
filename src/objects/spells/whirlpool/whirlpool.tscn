@@ -1,25 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://gfl3qfriaxd0"]
+[gd_scene load_steps=6 format=3 uid="uid://gfl3qfriaxd0"]
 
 [ext_resource type="Script" path="res://src/objects/spells/whirlpool/whirlpool.gd" id="1_pobsh"]
 [ext_resource type="Texture2D" uid="uid://etkko38xnl1i" path="res://assets/indev/temp_whirlpool_bg.png" id="2_6ms5k"]
+[ext_resource type="AudioStream" uid="uid://bbvlbxlotxp5b" path="res://assets/sound_effects/whirlpool.wav" id="2_mkuh3"]
 [ext_resource type="Texture2D" uid="uid://yk33sedph61i" path="res://assets/indev/temp_whirlpool_fg.png" id="3_jj374"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spmat"]
-radius = 234.077
+radius = 325.014
 
 [node name="Whirlpool" type="Area2D"]
 z_index = -2
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_pobsh")
-dps = 50.0
+
+[node name="WhirlSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mkuh3")
+volume_db = 8.0
+autoplay = true
+bus = &"SFX"
 
 [node name="FG" type="Sprite2D" parent="."]
-scale = Vector2(5.69, 5.69)
+scale = Vector2(8, 8)
 texture = ExtResource("2_6ms5k")
 
 [node name="BG" type="Sprite2D" parent="."]
-scale = Vector2(5.69, 5.69)
+scale = Vector2(8, 8)
 texture = ExtResource("3_jj374")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

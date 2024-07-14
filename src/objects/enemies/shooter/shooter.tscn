@@ -203,12 +203,14 @@ monitoring = false
 script = ExtResource("1_sy55w")
 projectile_scene = ExtResource("2_1tkrl")
 death_reward = 30
-wanted_distance = 600.0
+speed = 130.0
+wanted_distance = 650.0
 perfect_distance = true
 attack_range = 750.0
 variants = Array[SpriteFrames]([ExtResource("3_7quwd"), ExtResource("4_qn66w"), ExtResource("5_3m6sa")])
 
 [node name="Hurtable" parent="." instance=ExtResource("3_nbbkt")]
+max_health = 300
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://mplm77roh3vh"]
+[gd_scene load_steps=5 format=3 uid="uid://mplm77roh3vh"]
 
 [ext_resource type="Script" path="res://src/objects/spells/tsunami/tsunami.gd" id="1_rx5k6"]
 [ext_resource type="Texture2D" uid="uid://bklmeg20yn6sm" path="res://assets/indev/temp_tsunami.png" id="2_gxdke"]
+[ext_resource type="AudioStream" uid="uid://b7y5xguxne5gt" path="res://assets/sound_effects/tsunami.wav" id="2_kv3ik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_242d8"]
 size = Vector2(50, 120)
@@ -13,6 +14,12 @@ collision_layer = 4
 collision_mask = 6
 monitorable = false
 script = ExtResource("1_rx5k6")
+
+[node name="WaveSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kv3ik")
+volume_db = 4.0
+autoplay = true
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 0)

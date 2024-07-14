@@ -1,10 +1,10 @@
 extends Area2D
 
-@export var speed: float = 200.0
+@export var speed: float = 100.0
 @export var fuse: float = 3.0
 @export var base_knockback: float = 500.0
-@export var base_damage: int = 300
-@export var stun_time: float = 2.0
+@export var base_damage: int = 100
+@export var stun_time: float = 8.0
 
 var soap := false
 

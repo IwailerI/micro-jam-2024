@@ -11,7 +11,7 @@ region = Rect2(24, 0, 12, 12)
 [resource]
 script = ExtResource("1_3wfka")
 name = "Whirlpool"
-cost = 200
+cost = 50
 shop_cost = 100
 object = ExtResource("1_m4sbu")
 icon = SubResource("AtlasTexture_g0h2n")
