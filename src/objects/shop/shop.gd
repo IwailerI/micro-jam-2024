@@ -1,3 +1,4 @@
+class_name SpellShop
 extends CanvasLayer
 
 @export var spell_pool: Array[Spell] = []
@@ -20,10 +21,6 @@ func _ready() -> void:
 		add_spell(left_spell))
 	button_right.pressed.connect(func() -> void:
 		add_spell(right_spell))
-
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("spell"):
-		start_session()
 
 func start_session() -> void:
 	get_tree().paused = true
