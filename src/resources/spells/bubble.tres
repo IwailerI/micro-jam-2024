@@ -15,4 +15,4 @@ cost = 150
 shop_cost = 100
 object = ExtResource("1_gvsuh")
 icon = SubResource("AtlasTexture_4mkh1")
-description = "A powerful spell to conquer your enemies!"
+description = "A slow projectiles that stuns enemies on impact."

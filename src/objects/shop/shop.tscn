@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c46sj4cnfole0"]
+[gd_scene load_steps=5 format=3 uid="uid://c46sj4cnfole0"]
 
 [ext_resource type="Script" path="res://src/objects/shop/shop.gd" id="1_cf3oo"]
 [ext_resource type="Texture2D" uid="uid://dvsax3o5p86t2" path="res://assets/indev/temp_spell_icons.png" id="1_ffsrh"]
@@ -6,6 +6,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntqba"]
 atlas = ExtResource("1_ffsrh")
 region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ojm3"]
+font_size = 141
 
 [node name="Shop" type="CanvasLayer"]
 process_mode = 3
@@ -26,7 +29,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Pick a spell! (it will cost ya)"
+text = "Select a spell!"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
@@ -62,11 +65,13 @@ autowrap_mode = 3
 [node name="ButtonLeft" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Select"
 
 [node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "or"
+label_settings = SubResource("LabelSettings_5ojm3")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -96,4 +101,5 @@ autowrap_mode = 3
 [node name="ButtonRight" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Select"
