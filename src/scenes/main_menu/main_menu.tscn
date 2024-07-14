@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo0aoefqo6ul2"]
+[gd_scene load_steps=9 format=3 uid="uid://bo0aoefqo6ul2"]
 
 [ext_resource type="FontFile" uid="uid://darektxxammle" path="res://assets/font/title.ttf" id="1_4ipp7"]
 [ext_resource type="Texture2D" uid="uid://srev1ei8b8rm" path="res://assets/ui/button_normal.png" id="2_18ry6"]
+[ext_resource type="PackedScene" uid="uid://bc1kfv3ylyohc" path="res://src/objects/background/background.tscn" id="2_c0emb"]
 [ext_resource type="Texture2D" uid="uid://nhalms8xqmeu" path="res://assets/ui/button_pressed.png" id="3_fvelp"]
 [ext_resource type="Texture2D" uid="uid://cl8b3o2yyjrdh" path="res://assets/ui/button_hover.png" id="4_j826e"]
 [ext_resource type="Script" path="res://src/scenes/main_menu/play_button.gd" id="5_bvai3"]
@@ -17,6 +18,8 @@ grow_vertical = 2
 
 [node name="MenuMusic" parent="." instance=ExtResource("7_bt3a6")]
 bus = &"Music"
+
+[node name="Background" parent="." instance=ExtResource("2_c0emb")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

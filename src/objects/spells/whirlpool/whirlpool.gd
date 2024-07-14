@@ -1,7 +1,7 @@
 extends Area2D
 
 ## Damage per second
-@export var dps: float = 0
+@export var dps: float = 20
 @export var lifetime: float = 5.0
 ## Rotation speed in turns per second.
 @export var rotation_speed: float = 0.2

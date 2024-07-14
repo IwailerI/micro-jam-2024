@@ -3,7 +3,7 @@ class_name Walker
 
 const WATER_DROP_SCENE := preload ("res://src/objects/waterdrop/water_drop.tscn")
 
-@export var death_reward: int = 10
+@export var death_reward: int = 20
 @export var speed: float = 150.0
 @export var wanted_distance: float = 100.0
 @export var perfect_distance: bool = false

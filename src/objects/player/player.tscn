@@ -323,7 +323,7 @@ radius = 32.1403
 radius = 34.5254
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv56u"]
-size = Vector2(202, 180)
+size = Vector2(234, 180)
 
 [sub_resource type="Gradient" id="Gradient_4vjal"]
 offsets = PackedFloat32Array(0, 0.169643, 0.848214, 1)
@@ -436,7 +436,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 visible = false
-position = Vector2(49, 0)
+position = Vector2(65, 0)
 shape = SubResource("RectangleShape2D_jv56u")
 debug_color = Color(0.928424, 0.0568346, 0.640736, 0.42)
 
