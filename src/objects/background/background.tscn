@@ -1,30 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://bc1kfv3ylyohc"]
 
-[ext_resource type="Texture2D" uid="uid://e1157jhcb2ad" path="res://assets/environment/background.png" id="1_jtvm8"]
+[ext_resource type="Texture2D" uid="uid://cquqcgb0c3cea" path="res://assets/environment/sand.png" id="1_3qgs3"]
 
 [node name="Background" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(3040, 3040)
+motion_mirroring = Vector2(3200, 3200)
 
 [node name="Node2D" type="Node2D" parent="ParallaxLayer"]
 scale = Vector2(5, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer/Node2D"]
-texture = ExtResource("1_jtvm8")
-centered = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer/Node2D"]
-position = Vector2(608, 0)
-texture = ExtResource("1_jtvm8")
-centered = false
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer/Node2D"]
-position = Vector2(0, 608)
-texture = ExtResource("1_jtvm8")
-centered = false
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer/Node2D"]
-position = Vector2(608, 608)
-texture = ExtResource("1_jtvm8")
+texture = ExtResource("1_3qgs3")
 centered = false
