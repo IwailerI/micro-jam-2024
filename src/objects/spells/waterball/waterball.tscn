@@ -18,8 +18,8 @@ offsets = PackedFloat32Array(0.633333, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_ktimn"]
-offsets = PackedFloat32Array(0, 0.393333, 0.68, 1)
-colors = PackedColorArray(0.188067, 0.376638, 0.510002, 1, 0.356619, 0.431357, 0.88275, 1, 0.372244, 0.804089, 0.894469, 1, 0.796277, 0.858808, 0.988266, 1)
+offsets = PackedFloat32Array(0, 0.470238, 1)
+colors = PackedColorArray(0.188067, 0.376638, 0.510002, 1, 0.356619, 0.431357, 0.88275, 1, 0.535645, 0.673035, 0.973608, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ttlf0"]
 radius = 14.0

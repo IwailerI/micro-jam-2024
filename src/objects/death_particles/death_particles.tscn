@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://rhx6vxf3rlpx"]
+
+[ext_resource type="Script" path="res://src/objects/death_particles/death_particles.gd" id="1_8ast8"]
+[ext_resource type="Texture2D" uid="uid://0lccg0k0dhdd" path="res://assets/particles/particle_ring.png" id="1_xs727"]
+
+[sub_resource type="Gradient" id="Gradient_60p0h"]
+offsets = PackedFloat32Array(0.488095, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_ktimn"]
+offsets = PackedFloat32Array(0, 0.470238, 1)
+colors = PackedColorArray(0.188067, 0.376638, 0.510002, 1, 0.356619, 0.431357, 0.88275, 1, 0.535645, 0.673035, 0.973608, 1)
+
+[node name="DeathParticles" type="Node2D"]
+script = ExtResource("1_8ast8")
+
+[node name="Puddle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+texture = ExtResource("1_xs727")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 60.0
+damping_min = 27.083
+damping_max = 39.063
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_60p0h")
+color_initial_ramp = SubResource("Gradient_ktimn")
+
+[node name="Small" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+linear_accel_min = -13.85
+radial_accel_min = 16.67
+radial_accel_max = 16.67
+damping_min = 29.686
+damping_max = 45.832
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_60p0h")
+color_initial_ramp = SubResource("Gradient_ktimn")

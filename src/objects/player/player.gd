@@ -25,6 +25,7 @@ var soap := false:
 @onready var hurtable: Hurtable = %Hurtable
 @onready var spell_cast_marker: Node2D = %SpellCastPosition
 @onready var health_bar: ProgressBar = %HealthBar
+@onready var health_bar_text: Label = %HealthLabel
 @onready var spell_slots: Array[TextureRect] = [
 	%SpellSlot1,
 	%SpellSlot2,
@@ -43,11 +44,13 @@ func _ready() -> void:
 
 	health_bar.max_value = hurtable.max_health
 	health_bar.value = hurtable.health
-	hurtable.health_changed.connect(func(h: int) -> void:
-		var t:=health_bar.create_tween()
-		t.tween_property(health_bar, "value", h, 0.2))
+	hurtable.health_changed.connect(update_visual_health)
+	hurtable.max_health_changed.connect(func(_v: int) -> void:
+		update_visual_health(hurtable.health))
 
 	hurtable.died.connect(func() -> void:
+		DeathParticles.do(self)
+		hide()
 		await get_tree().create_timer(1.0).timeout
 		ScreenTransition.change_scene_to_packed(DEATH_SCREEN))
 
@@ -110,6 +113,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("spell_slot_4"):
 		queue_spell(3)
 		get_viewport().set_input_as_handled()
+
+func update_visual_health(v: int) -> void:
+	var t := health_bar.create_tween()
+	health_bar.max_value = hurtable.max_health
+	t.set_parallel(true)
+	t.tween_property(health_bar, "value", v, 0.2)
+	t.tween_property(health_bar, "max_value", hurtable.max_health, 0.2)
+	t.tween_method((func(new_v: int) -> void:
+			health_bar_text.text="%d/%d" % [new_v, ceili(health_bar.max_value)]),
+			health_bar.value, v, 0.2)
 
 func get_primary_input() -> Vector2:
 	return Vector2(

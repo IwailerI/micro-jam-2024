@@ -7,10 +7,14 @@ signal transition_finished
 func _ready() -> void:
 	call_deferred("transition_out")
 
+func is_in_transition() -> bool:
+	return anim.is_playing()
+
 func transition_out() -> void:
 	anim.play("transition_out")
 	await anim.animation_finished
 	hide()
+	transition_finished.emit()
 
 func do_transition(loader: Callable) -> void:
 	show()

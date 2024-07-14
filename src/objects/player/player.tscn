@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://iup832stpqv3"]
+[gd_scene load_steps=33 format=3 uid="uid://iup832stpqv3"]
 
 [ext_resource type="Script" path="res://src/objects/player/player.gd" id="1_vdg4c"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_o5oul"]
@@ -326,6 +326,29 @@ size = Vector2(202, 180)
 offsets = PackedFloat32Array(0, 0.169643, 0.848214, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrcnx"]
+bg_color = Color(0.256238, 0.607171, 0.997577, 1)
+draw_center = false
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8k0v1"]
+bg_color = Color(0.256238, 0.607171, 0.997577, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdm03"]
 atlas = ExtResource("6_ry72u")
 region = Rect2(72, 0, 12, 12)
@@ -425,7 +448,7 @@ color_ramp = SubResource("Gradient_4vjal")
 [node name="CanbasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="UI" type="VBoxContainer" parent="CanbasLayer"]
+[node name="UI" type="HBoxContainer" parent="CanbasLayer"]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.01078
@@ -439,12 +462,25 @@ mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanbasLayer/UI"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 0)
+custom_minimum_size = Vector2(49.385, 4.59)
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_hrcnx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8k0v1")
 step = 0.0
+fill_mode = 3
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="CanbasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "1000/1000"
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="CanbasLayer/UI"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
@@ -452,30 +488,31 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanbasLayer/UI/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanbasLayer/UI/PanelContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="SpellSlot1" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+[node name="SpellSlot1" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_rdm03")
 
-[node name="SpellSlot2" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+[node name="SpellSlot2" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_rdm03")
 
-[node name="SpellSlot3" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+[node name="SpellSlot3" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_rdm03")
 
-[node name="SpellSlot4" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/HBoxContainer"]
+[node name="SpellSlot4" type="TextureRect" parent="CanbasLayer/UI/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
