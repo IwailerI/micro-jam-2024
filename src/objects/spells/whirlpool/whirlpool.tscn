@@ -12,6 +12,7 @@ z_index = -2
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_pobsh")
+dps = 50.0
 
 [node name="FG" type="Sprite2D" parent="."]
 scale = Vector2(5.69, 5.69)

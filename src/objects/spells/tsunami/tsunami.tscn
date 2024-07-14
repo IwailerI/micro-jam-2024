@@ -13,11 +13,6 @@ collision_layer = 4
 collision_mask = 6
 monitorable = false
 script = ExtResource("1_rx5k6")
-speed = null
-damage = null
-knockback = null
-lifetime = null
-fade_in = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 0)
