@@ -192,8 +192,9 @@ _data = {
 projectile_scene = ExtResource("2_5jv0v")
 spawn_distance = 50.0
 death_reward = 60
-<<<<<<< HEAD
-variants = Array[SpriteFrames]([ExtResource("3_gbuol")])
+
+[node name="Hurtable" parent="." index="0"]
+max_health = 100
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -202,6 +203,3 @@ libraries = {
 
 [node name="Sprite" parent="." index="3"]
 sprite_frames = ExtResource("3_gbuol")
-
-[node name="Hurtable" parent="." index="0"]
-max_health = 100
