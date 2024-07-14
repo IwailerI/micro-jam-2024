@@ -15,4 +15,4 @@ cost = 100
 shop_cost = 100
 object = ExtResource("1_o4t8i")
 icon = SubResource("AtlasTexture_fa2jg")
-description = "Circular attack that knock enemies away."
+description = "Strong circular attack that knock enemies away."

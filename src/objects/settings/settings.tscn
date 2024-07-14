@@ -9,6 +9,7 @@ font_size = 48
 font_size = 28
 
 [node name="Settings" type="CanvasLayer"]
+process_mode = 3
 layer = 24
 script = ExtResource("1_ylmim")
 

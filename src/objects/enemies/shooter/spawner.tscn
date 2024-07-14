@@ -86,7 +86,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ok3gq"]
 resource_name = "punch"
-length = 2.50001
+length = 2.7
 loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -191,7 +191,9 @@ _data = {
 [node name="Spawner" instance=ExtResource("1_fg0rd")]
 projectile_scene = ExtResource("2_5jv0v")
 spawn_distance = 50.0
-death_reward = 60
+death_reward = 15
+wanted_distance = 750.0
+attack_range = 1000.0
 
 [node name="Hurtable" parent="." index="0"]
 max_health = 100
