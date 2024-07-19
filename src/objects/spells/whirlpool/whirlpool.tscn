@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yk33sedph61i" path="res://assets/indev/temp_whirlpool_fg.png" id="3_jj374"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spmat"]
-radius = 325.014
+radius = 374.005
 
 [node name="Whirlpool" type="Area2D"]
 z_index = -2
@@ -21,11 +21,11 @@ autoplay = true
 bus = &"SFX"
 
 [node name="FG" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
+scale = Vector2(10, 10)
 texture = ExtResource("2_6ms5k")
 
 [node name="BG" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
+scale = Vector2(10, 10)
 texture = ExtResource("3_jj374")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

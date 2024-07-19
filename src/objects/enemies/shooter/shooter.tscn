@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/objects/enemies/shooter/shooter.gd" id="1_sy55w"]
 [ext_resource type="PackedScene" uid="uid://d1hghjabgbgq4" path="res://src/objects/enemies/projectile/enemy_projectile.tscn" id="2_1tkrl"]
-[ext_resource type="SpriteFrames" uid="uid://dpcmi7yjy2qhu" path="res://src/resources/animated_sprites/shooter0.tres" id="3_7quwd"]
+[ext_resource type="SpriteFrames" uid="uid://dpcmi7yjy2qhu" path="res://assets/ui/animated_sprites/shooter0.tres" id="3_g2a7p"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="3_nbbkt"]
-[ext_resource type="SpriteFrames" uid="uid://d04nelqvcjeg2" path="res://src/resources/animated_sprites/shooter1.tres" id="4_qn66w"]
-[ext_resource type="SpriteFrames" uid="uid://csp2hlgo8313i" path="res://src/resources/animated_sprites/shooter2.tres" id="5_3m6sa"]
+[ext_resource type="SpriteFrames" uid="uid://d04nelqvcjeg2" path="res://assets/ui/animated_sprites/shooter1.tres" id="4_06fic"]
+[ext_resource type="SpriteFrames" uid="uid://csp2hlgo8313i" path="res://assets/ui/animated_sprites/shooter2.tres" id="5_smara"]
 
 [sub_resource type="Animation" id="Animation_62ko2"]
 length = 0.001
@@ -207,7 +207,7 @@ speed = 130.0
 wanted_distance = 650.0
 perfect_distance = true
 attack_range = 750.0
-variants = Array[SpriteFrames]([ExtResource("3_7quwd"), ExtResource("4_qn66w"), ExtResource("5_3m6sa")])
+variants = Array[SpriteFrames]([ExtResource("3_g2a7p"), ExtResource("4_06fic"), ExtResource("5_smara")])
 
 [node name="Hurtable" parent="." instance=ExtResource("3_nbbkt")]
 max_health = 300
@@ -226,7 +226,7 @@ scale = Vector2(1.2439, 2.04878)
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 rotation = 1.5708
-sprite_frames = ExtResource("3_7quwd")
+sprite_frames = ExtResource("3_g2a7p")
 animation = &"idle"
 speed_scale = 0.0
 offset = Vector2(0, -6)

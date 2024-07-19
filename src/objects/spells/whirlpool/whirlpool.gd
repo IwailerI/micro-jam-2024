@@ -1,7 +1,7 @@
 extends Area2D
 
-## Damage per second
-@export var dps: float = 20
+@export var damage_per_second: int = 20 # will be divided by frames_per_attack
+@export var frames_per_attack: int = 10
 @export var lifetime: float = 5.0
 ## Rotation speed in turns per second.
 @export var rotation_speed: float = 0.2
@@ -9,6 +9,7 @@ extends Area2D
 @export var pull_velocity: float = 800.0
 @export var side_velocity: float = 800.0
 
+var damaged_timers := {}
 var enemies := {}
 var strength: float = 1.0
 var radius: float
@@ -33,12 +34,18 @@ func _physics_process(delta: float) -> void:
 	for node: Node2D in nodes:
 		if not node.is_in_group(Hurtable.GROUP):
 			continue
+		if not damaged_timers.has(node):
+			damaged_timers[node] = 0
 		var dir := node.global_position.direction_to(global_position)
 		var side_power := remap(node.global_position.distance_to(global_position), 0, radius, 0, 1.0)
 		var velocity := (dir * pull_velocity * strength
 				+ dir.rotated(PI * 0.5) * side_velocity * strength * side_power)
 		var h: Hurtable = node.get_node("Hurtable")
-		h.hurt(ceili(dps * delta * sm))
+		if damaged_timers[node] > 0:
+			damaged_timers[node] -= 1
+		else:
+			damaged_timers[node] = frames_per_attack
+			h.hurt(damage_per_second / frames_per_attack * sm)
 		h.knockback(velocity * delta)
 
 func destroy() -> void:

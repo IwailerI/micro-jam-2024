@@ -7,9 +7,9 @@ extends Area2D
 @export var base_damage: float = 500.0
 @export var damage_curve: Curve
 
-var radius: float
 var soap := false
 
+@onready var radius: float = $DetonationArea/CollisionShape2D["shape"]["radius"] / scale.x
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var tail_particles: CPUParticles2D = $CPUParticles2D
 @onready var detonation_particles: CPUParticles2D = $DetonationParticles
@@ -17,17 +17,21 @@ var soap := false
 @onready var sfx: AudioStreamPlayer = %ExplodeSFX
 
 func _ready() -> void:
-	body_entered.connect(func(_arg: Object) -> void: detonate())
-	area_entered.connect(func(_arg: Object) -> void: detonate())
+	body_entered.connect(func(node: Node2D) -> void: hit(node))
+	area_entered.connect(func(node: Node2D) -> void: hit(node))
 	get_tree().create_timer(fuse, false, true).timeout.connect(detonate)
 	($Hurtable as Hurtable).died.connect(detonate)
 	tail_particles.emitting = true
 
-	# forgive me father for i have sinned
-	radius = ((detonation_area.get_child(0) as CollisionShape2D).shape as CircleShape2D).radius
-
 func _physics_process(delta: float) -> void:
 	global_position += Vector2.RIGHT.rotated(rotation) * speed * delta
+
+func hit(node: Node2D) -> void:
+	if not node.is_in_group(Hurtable.GROUP):
+		return
+	var h: Hurtable = node.get_node("Hurtable")
+	h.hurt(base_damage)
+	detonate()
 
 func detonate() -> void:
 	sprite.hide()

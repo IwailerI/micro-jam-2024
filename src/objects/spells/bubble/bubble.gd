@@ -4,6 +4,7 @@ extends Area2D
 @export var fuse: float = 3.0
 @export var base_knockback: float = 500.0
 @export var base_damage: int = 100
+@export var damage_curve: Curve
 @export var stun_time: float = 8.0
 
 var soap := false
@@ -41,7 +42,12 @@ func detonate() -> void:
 		if not node.is_in_group(Hurtable.GROUP):
 			continue
 		var h: Hurtable = node.get_node("Hurtable")
-		h.hurt(ceili(base_damage * sm))
+		
+		var distance := clampf(
+			node.global_position.distance_to(global_position) / radius,
+			0.0, 1.0)
+		
+		h.hurt(ceili(base_damage * damage_curve.sample(distance) * sm))
 		h.knockback(global_position.direction_to(node.global_position) * base_knockback * sm)
 
 		if node.is_in_group("Stunable"):

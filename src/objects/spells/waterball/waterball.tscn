@@ -11,8 +11,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.03795, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_2fbaq"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.342105, 0.835165), -0.501099, -0.614092, 0, 0, Vector2(1, 0.23922), -1.8249, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, -0.93956, 0, 0, Vector2(1, 0), -0.935961, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_oyjgo"]
 offsets = PackedFloat32Array(0.633333, 1)
@@ -30,7 +30,7 @@ offsets = PackedFloat32Array(0.84, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5rme"]
-radius = 99.0
+radius = 72.5249
 
 [node name="Waterball" type="Area2D"]
 scale = Vector2(3.585, 3.585)

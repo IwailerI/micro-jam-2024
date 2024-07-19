@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://c18edgrsraowo"]
 
 [ext_resource type="PackedScene" uid="uid://cjyamonvs82b8" path="res://src/objects/enemies/walker/walker.tscn" id="1_r2rp0"]
-[ext_resource type="SpriteFrames" uid="uid://dt8uow8v0n7t4" path="res://src/resources/animated_sprites/big0.tres" id="2_t0pyr"]
-[ext_resource type="SpriteFrames" uid="uid://dxyautqs8dviy" path="res://src/resources/animated_sprites/big1.tres" id="3_kots0"]
-[ext_resource type="SpriteFrames" uid="uid://mpa2dggi7jca" path="res://src/resources/animated_sprites/big2.tres" id="4_yciqf"]
+[ext_resource type="SpriteFrames" uid="uid://dt8uow8v0n7t4" path="res://assets/ui/animated_sprites/big0.tres" id="2_jmqkv"]
+[ext_resource type="SpriteFrames" uid="uid://dxyautqs8dviy" path="res://assets/ui/animated_sprites/big1.tres" id="3_ga0dq"]
+[ext_resource type="SpriteFrames" uid="uid://mpa2dggi7jca" path="res://assets/ui/animated_sprites/big2.tres" id="4_um7lk"]
 
 [sub_resource type="Animation" id="Animation_62ko2"]
 length = 0.001
@@ -209,18 +209,18 @@ _data = {
 radius = 10.8346
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pwmc"]
-size = Vector2(64.8333, 38.6667)
+size = Vector2(54.3333, 38.6667)
 
 [node name="BigWalker" instance=ExtResource("1_r2rp0")]
 scale = Vector2(6, 6)
 death_reward = 30
 speed = 110.0
 wanted_distance = 150.0
-attack_range = 330.0
+attack_range = 250.0
 enemy_distance = 140.0
 knockback_accel = 500.0
 damage = 75
-variants = Array[SpriteFrames]([ExtResource("2_t0pyr"), ExtResource("3_kots0"), ExtResource("4_yciqf")])
+variants = Array[SpriteFrames]([ExtResource("2_jmqkv"), ExtResource("3_ga0dq"), ExtResource("4_um7lk")])
 
 [node name="Hurtable" parent="." index="0"]
 max_health = 1000
@@ -232,11 +232,11 @@ libraries = {
 
 [node name="Sprite" parent="." index="3"]
 scale = Vector2(1.1, 1.1)
-sprite_frames = ExtResource("2_t0pyr")
+sprite_frames = ExtResource("2_jmqkv")
 
 [node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_35i55")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(23.4167, 0)
+position = Vector2(18.1667, 0)
 shape = SubResource("RectangleShape2D_6pwmc")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://cjyamonvs82b8"]
 
 [ext_resource type="Script" path="res://src/objects/enemies/walker/walker.gd" id="1_1tin7"]
-[ext_resource type="SpriteFrames" uid="uid://4317eduo63l7" path="res://src/resources/animated_sprites/walker0.tres" id="2_okmcb"]
+[ext_resource type="SpriteFrames" uid="uid://4317eduo63l7" path="res://assets/ui/animated_sprites/walker0.tres" id="2_30ww5"]
 [ext_resource type="PackedScene" uid="uid://cw1lk4a1brvrr" path="res://src/objects/hurtable/hurtable.tscn" id="2_q1dx7"]
-[ext_resource type="SpriteFrames" uid="uid://du1erwrubte1v" path="res://src/resources/animated_sprites/walker1.tres" id="3_vodwb"]
-[ext_resource type="SpriteFrames" uid="uid://bd733d3ilqu3n" path="res://src/resources/animated_sprites/walker2.tres" id="4_xxhx4"]
-[ext_resource type="SpriteFrames" uid="uid://cx5qxlv25iief" path="res://src/resources/animated_sprites/walker3.tres" id="5_wxt1u"]
-[ext_resource type="SpriteFrames" uid="uid://bu3njgfd8voj1" path="res://src/resources/animated_sprites/walker4.tres" id="6_13lns"]
-[ext_resource type="SpriteFrames" uid="uid://b3v2xmcsb4bes" path="res://src/resources/animated_sprites/walker5.tres" id="7_4ag3u"]
+[ext_resource type="SpriteFrames" uid="uid://du1erwrubte1v" path="res://assets/ui/animated_sprites/walker1.tres" id="3_6sp6n"]
+[ext_resource type="SpriteFrames" uid="uid://bd733d3ilqu3n" path="res://assets/ui/animated_sprites/walker2.tres" id="4_ho4u4"]
+[ext_resource type="SpriteFrames" uid="uid://cx5qxlv25iief" path="res://assets/ui/animated_sprites/walker3.tres" id="5_vev8o"]
+[ext_resource type="SpriteFrames" uid="uid://bu3njgfd8voj1" path="res://assets/ui/animated_sprites/walker4.tres" id="6_as6r5"]
+[ext_resource type="SpriteFrames" uid="uid://b3v2xmcsb4bes" path="res://assets/ui/animated_sprites/walker5.tres" id="7_kjfgc"]
 
 [sub_resource type="Animation" id="Animation_62ko2"]
 length = 0.001
@@ -224,7 +224,7 @@ monitoring = false
 script = ExtResource("1_1tin7")
 death_reward = 15
 attack_range = 150.0
-variants = Array[SpriteFrames]([ExtResource("2_okmcb"), ExtResource("3_vodwb"), ExtResource("4_xxhx4"), ExtResource("5_wxt1u"), ExtResource("6_13lns"), ExtResource("7_4ag3u")])
+variants = Array[SpriteFrames]([ExtResource("2_30ww5"), ExtResource("3_6sp6n"), ExtResource("4_ho4u4"), ExtResource("5_vev8o"), ExtResource("6_as6r5"), ExtResource("7_kjfgc")])
 
 [node name="Hurtable" parent="." instance=ExtResource("2_q1dx7")]
 
@@ -242,7 +242,7 @@ scale = Vector2(1.2439, 2.04878)
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 rotation = 1.5708
-sprite_frames = ExtResource("2_okmcb")
+sprite_frames = ExtResource("2_30ww5")
 animation = &"idle"
 autoplay = "idle"
 speed_scale = 0.0
